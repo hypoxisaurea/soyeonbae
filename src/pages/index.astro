@@ -1,78 +1,139 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
+import { projectCases } from "../data/projectCases";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const publications = [
+  {
+    title: "도메인 특화 임베딩 학습을 활용한 한국어 법률 질의응답 RAG 시스템 최적화 연구",
+    venue: "KCSE 2026",
+    role: "제1저자",
+    description: "법률 도메인 임베딩 fine-tuning과 검색 평가 체계를 통해 MRR@10을 최대 5.6% 개선했습니다.",
+  },
+  {
+    title: "약관조항에 대한 초거대언어 모델의 공정성판단 연구",
+    venue: "KCC 2025",
+    role: "공동저자",
+    description: "LLM을 활용한 약관 조항 공정성 판단의 가능성과 한계를 분석했습니다.",
+  },
+];
 
-const last_posts = posts.slice(0, 3);
+const experience = [
+  { title: "SSAFY 16기", role: "Samsung Software Academy", period: "2026.07 — Present", bullets: ["AI 서비스와 금융 도메인 프로젝트를 개발하며 소프트웨어 역량을 확장하고 있습니다."] },
+  { title: "DeepModal", role: "AI Researcher", period: "2025.06 — 2025.12", bullets: ["공정거래위원회 AI 약관 심사 플랫폼의 법령 데이터 구축과 RAG 검색 성능 개선을 담당했습니다.", "89,994쌍의 QA 데이터를 구축하고 국내 학술대회 논문 2편을 게재했습니다."] },
+  { title: "Prometheus 5기", role: "AI Project Member", period: "2024.03 — 2025.02", bullets: ["암호화폐 백서 분석, LLM 기반 추리 게임, 맞춤형 동화 생성 프로젝트를 수행했습니다."] },
+  { title: "UMC 5기", role: "Frontend Study Lead", period: "2023.09 — 2024.02", bullets: ["React 스터디를 이끌고 Career Festival 프로젝트의 주요 화면을 구현했습니다."] },
+  { title: "설리번 프로젝트", role: "Development Education Volunteer", period: "2020.09 — 2021.02", bullets: ["Flutter 일기장 앱 커리큘럼과 자료를 제작하고 고등학생·비전공자 대상 교육을 진행했습니다."] },
+];
+
+const education = [
+  { title: "Hansung University", detail: "B.S. in Computer Engineering", period: "2020.03 — 2025.02" },
+  { title: "LG AI Aimers 4기", detail: "AI/ML 교육 수료", period: "2024.01 — 2024.02" },
+  { title: "Naver Coaching Study", detail: "Data Science 과정 수료", period: "2024.01 — 2024.02" },
+  { title: "SK AI Data Academy 1기", detail: "산업 데이터 기반 AI 프로젝트", period: "2024.07 — 2024.08" },
+];
+
+const awards = [
+  ["대상", "2025 제주 런케이션 AI 해커톤", "Wecation"],
+  ["최우수상", "2025 서울 AI 해커톤", "Kaption"],
+  ["동상", "2024 공개 SW 개발자대회", "Hearus"],
+  ["인기상", "2024 스마일게이트 AI 위클리톤", "Toon Surfing"],
+];
+
+const featuredProjectSlugs = ["darkaudit", "finagent-sme", "kaption", "legal-rag"];
+const featuredProjects = projectCases.filter((project) => featuredProjectSlugs.includes(project.slug));
+
+const certifications = ["AWS Certified AI Practitioner", "빅데이터분석기사", "정보처리기사", "ADsP", "SQLD"];
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
-    <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+<BaseLayout includeSidebar={false} title="배소연 | AI Engineer" description="RAG, Agentic AI, 멀티모달 시스템을 실제 서비스로 구현하는 AI Engineer 배소연의 포트폴리오">
+  <div class="clean-portfolio">
+    <aside class="profile-panel" aria-label="프로필">
+      <div class="profile-monogram" aria-hidden="true">BS</div>
+      <h1>배소연</h1>
+      <p class="profile-role">AI Engineer</p>
+      <p class="profile-focus">RAG · Agentic AI<br />Multimodal Systems</p>
+      <div class="profile-block">
+        <strong>Hansung University</strong>
+        <span>B.S. in Computer Engineering</span>
+        <span>2020 — 2025</span>
+      </div>
+      <div class="profile-block">
+        <strong>SSAFY 16기</strong>
+        <span>2026.07 — Present</span>
+        <span>Seoul, South Korea</span>
+      </div>
+      <div class="profile-links">
+        <a href="mailto:flickerlight14@naver.com">Email</a>
+        <a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog</a>
+      </div>
+    </aside>
+
+    <div class="portfolio-main">
+      <section class="clean-intro">
+        <p>안녕하세요, AI 엔지니어 배소연입니다.</p>
+        <h2>복잡한 정보를 근거가 분명하고<br />실제로 사용할 수 있는 AI로 만듭니다.</h2>
+        <p>법률·금융처럼 신뢰가 중요한 문서에서 데이터 구축, 검색 평가, 모델 연동, 사용자 인터페이스를 하나의 서비스 흐름으로 연결해 왔습니다. 성능 수치만 높이는 것보다 실패 원인을 설명하고 다시 검증할 수 있는 시스템을 지향합니다.</p>
+      </section>
+
+      <nav class="clean-nav" aria-label="페이지 내 이동">
+        <a href="#education">Education</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#awards">Awards</a><a href="#skills">Skills</a>
+      </nav>
+
+      <section id="education" class="clean-section">
+        <h2>Education</h2>
+        <ul class="clean-list">
+          {education.map((item) => <li class="clean-entry"><div class="entry-row"><strong>{item.title}</strong><time>{item.period}</time></div><p class="clean-meta">{item.detail}</p></li>)}
+        </ul>
+      </section>
+
+      <section id="publications" class="clean-section">
+        <h2>Publications</h2>
+        <ul class="clean-list">
+          {publications.map((item) => <li class="clean-entry publication-clean"><p><span class="clean-badge">{item.venue}</span><span class="clean-badge muted">{item.role}</span></p><strong>{item.title}</strong><p class="clean-desc">{item.description}</p></li>)}
+        </ul>
+      </section>
+
+      <section id="experience" class="clean-section">
+        <h2>Experience</h2>
+        <ul class="clean-list">
+          {experience.map((item) => <li class="clean-entry"><div class="entry-row"><strong>{item.title}</strong><time>{item.period}</time></div><p class="clean-meta">{item.role}</p><ul class="clean-bullets">{item.bullets.map((bullet) => <li>{bullet}</li>)}</ul></li>)}
+        </ul>
+      </section>
+
+      <section id="projects" class="clean-section">
+        <div class="clean-section-title"><h2>Selected Projects</h2><a href="/projects/">View all →</a></div>
+        <ul class="clean-list">
+          {featuredProjects.map((project) => (
+            <li class="clean-entry project-clean">
+              <div class="entry-row"><strong><a href={`/projects/${project.slug}/`}>{project.title}</a></strong><time>{project.period}</time></div>
+              <p class="clean-meta">{project.kicker} · {project.role}</p>
+              <p class="clean-desc">{project.summary}</p>
+              <div class="clean-links"><a href={`/projects/${project.slug}/`}>Case Study</a>{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub / PR</a>}{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo</a>}</div>
+            </li>
+          ))}
+        </ul>
+
+      </section>
+
+      <section id="awards" class="clean-section">
+        <h2>Awards</h2>
+        <ul class="clean-list award-list">
+          {awards.map(([award, event, project]) => <li class="clean-entry"><span class="clean-badge">{award}</span><strong>{event}</strong><span>{project}</span></li>)}
+        </ul>
+      </section>
+
+      <section id="skills" class="clean-section">
+        <h2>Skills &amp; Certifications</h2>
+        <div class="skill-lines">
+          <p><strong>AI / Data</strong><span>Python, SQL, PyTorch, TensorFlow, Pandas, RAG, LangChain, RAGAS</span></p>
+          <p><strong>Product</strong><span>TypeScript, React, Java, FastAPI, REST API, Chrome Extension</span></p>
+          <p><strong>Cloud / Tools</strong><span>AWS, Git, GitHub, Firebase, Selenium, Figma</span></p>
+          <p><strong>Credentials</strong><span>{certifications.join(" · ")}</span></p>
+          <p><strong>Language</strong><span>TOEIC 915 · TOEIC Speaking Advanced Low</span></p>
+        </div>
+      </section>
     </div>
-    <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
-      </a>
-    </div>
   </div>
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
-  </div>
-
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
-  </div>
-
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
 </BaseLayout>

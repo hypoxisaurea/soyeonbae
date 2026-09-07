@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const credentials = ["AWS Certified AI Practitioner", "Engineer Big Data Analysis", "Engineer Information Processing", "ADsP", "SQLD"];
+---
+
+<BaseLayout locale="en" includeSidebar={false} title="CV | Soyeon Bae" description="Curriculum vitae of AI Engineer Soyeon Bae.">
+  <div class="standalone-page">
+    <p class="eyebrow">CURRICULUM VITAE</p>
+    <h1>Soyeon Bae<br /><span>AI Engineer</span></h1>
+    <p class="page-lead">I build accurate and operationally reliable services with RAG pipelines and agentic AI.</p>
+    <div class="cv-grid">
+      <section><h2>Experience</h2><article><strong>SSAFY Cohort 16</strong><time>2026.07 — Present</time><p>Samsung Software Academy</p></article><article><strong>DeepModal · AI Researcher</strong><time>2025.06 — 2025.12</time><p>Built legal data, retrieval evaluation, and embedding training for the Korea Fair Trade Commission's AI contract-review platform.</p></article><article><strong>UMC Cohort 5</strong><time>2023.09 — 2024.02</time><p>Frontend track React study lead</p></article></section>
+      <section><h2>Education</h2><article><strong>Hansung University</strong><time>2020.03 — 2025.02</time><p>B.S. in Computer Engineering</p></article><article><strong>LG AI Aimers Cohort 4</strong><time>2024.01 — 2024.02</time><p>AI/ML Program</p></article><article><strong>Naver Coaching Study</strong><time>2024.01 — 2024.02</time><p>Data Science Program</p></article><article><strong>SK AI Data Academy Cohort 1</strong><time>2024.07 — 2024.08</time><p>Industry Data AI Project</p></article><article><strong>Kiwoom Digital Academy Cohort 1</strong><time>2025.04 — 2025.07</time><p>Financial Data Analysis Program</p></article></section>
+      <section><h2>Research</h2><article><strong>KCSE 2026 · First Author</strong><p>Optimizing a Korean Legal QA RAG System through Domain-Specific Embedding Training</p></article><article><strong>KCC 2025 · Co-author</strong><p>A Study on Fairness Judgment of Contract Terms Using Large Language Models</p></article></section>
+      <section><h2>Credentials</h2><p>{credentials.join(" · ")}</p><p class="mt-3">TOEIC 915 · TOEIC Speaking Advanced Low</p></section>
+    </div>
+    <a class="back-link" href="/en/#experience">View the full portfolio →</a>
+  </div>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projectCases, type ProjectCase } from "../../data/projectCases";
+
+export function getStaticPaths() {
+  return projectCases.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: ProjectCase };
+const description = `${project.summary} 문제 정의, 기여 내용, 기술적 판단과 결과를 정리한 프로젝트 사례입니다.`;
+---
+
+<BaseLayout includeSidebar={false} title={`${project.title} | 배소연`} description={description} image={null} sideBarActiveItemID="projects">
+  <article class="case-study">
+    <a class="case-back" href="/#projects">← Selected Work</a>
+    <header class="case-hero">
+      <p class="eyebrow">{project.kicker}</p>
+      <h1>{project.title}</h1>
+      <p class="case-summary">{project.summary}</p>
+      <div class="case-meta">
+        <div><span>Period</span><strong>{project.period}</strong></div>
+        <div><span>Role</span><strong>{project.role}</strong></div>
+      </div>
+      <div class="case-actions">
+        {project.github && <a class="primary-link" href={project.github} target="_blank" rel="noreferrer">GitHub / PR ↗</a>}
+        {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo Video ↗</a>}
+      </div>
+    </header>
+
+    <section class="case-section">
+      <p class="case-number">01</p>
+      <div><h2>Problem</h2><p>{project.problem}</p></div>
+    </section>
+    <section class="case-section">
+      <p class="case-number">02</p>
+      <div><h2>What I did</h2><ul>{project.contributions.map((item) => <li>{item}</li>)}</ul></div>
+    </section>
+    <section class="case-section">
+      <p class="case-number">03</p>
+      <div><h2>Technical decisions</h2><ul>{project.decisions.map((item) => <li>{item}</li>)}</ul></div>
+    </section>
+    <section class="case-section">
+      <p class="case-number">04</p>
+      <div><h2>Results</h2><div class="result-grid">{project.results.map((item) => <p>{item}</p>)}</div></div>
+    </section>
+    <section class="case-section">
+      <p class="case-number">05</p>
+      <div><h2>Stack</h2><ul class="case-stack">{project.stack.map((item) => <li>{item}</li>)}</ul></div>
+    </section>
+
+    <footer class="case-footer">
+      <p>{project.sourceNote}</p>
+      <div>{project.github && <a href={project.github} target="_blank" rel="noreferrer">코드와 문서 확인하기 ↗</a>}<a href="/#projects">다른 프로젝트 보기 →</a></div>
+    </footer>
+  </article>
+</BaseLayout>

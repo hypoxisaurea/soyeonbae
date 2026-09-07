@@ -1,26 +1,42 @@
 ---
 const { sideBarActiveItemID } = Astro.props;
-const activeClass = "bg-base-300"; // For primary color replace with `active` class
+const activeClass = "is-active";
+const mainMenu = [
+  { id: "home", label: "Home", href: "/" },
+  { id: "projects", label: "Projects", href: "/#projects" },
+  { id: "research", label: "Research", href: "/#research" },
+  { id: "experience", label: "Experience", href: "/#experience" },
+  { id: "awards", label: "Awards", href: "/#awards" },
+  { id: "about", label: "About", href: "/#about" },
+];
 ---
 
-<ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-    <li><a class="py-3 text-base" id="projects" href="/projects">Projects</a></li>
-    <li><a class="py-3 text-base" id="services" href="/services">Services</a></li>
-    <li><a class="py-3 text-base" id="store" href="/store">Store</a></li>
-    <li><a class="py-3 text-base" id="blog" href="/blog/">Blog</a></li>
-    <li><a class="py-3 text-base" id="cv" href="/cv">CV</a></li>
-    <li>
-        <a
-            class="py-3 text-base"
-            href="mailto:contact.manuelernestog@gmail.com"
-            target="_blank"
-            referrerpolicy="no-referrer-when-downgrade">Contact</a
-        >
-    </li>
-</ul>
+<nav class="flex min-h-0 grow flex-col" aria-label="Primary navigation">
+  <ul class="space-y-1">
+    {mainMenu.map((item) => <li><a id={item.id} href={item.href} class="sidebar-link block py-1.5 text-[0.95rem]">{item.label}</a></li>)}
+  </ul>
+  <div class="sidebar-divider my-7 border-t"></div>
+  <section aria-labelledby="contact-heading">
+    <h2 id="contact-heading" class="sidebar-section-title mb-3 text-[0.7rem] font-semibold tracking-[0.18em]">CONTACT</h2>
+    <ul class="sidebar-secondary space-y-2 text-sm">
+      <li><a href="mailto:flickerlight14@naver.com">Email ↗</a></li>
+      <li><a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub ↗</a></li>
+      <li><a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
+      <li><a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog ↗</a></li>
+      <li><a href="https://successful-clownfish-3bd.notion.site/1e8c25f25af44ba5b067b2fb7513f271?pvs=74" target="_blank" rel="noreferrer">Notion ↗</a></li>
+    </ul>
+  </section>
+  <div class="sidebar-divider my-7 border-t"></div>
+  <section aria-labelledby="education-heading">
+    <h2 id="education-heading" class="sidebar-section-title mb-3 text-[0.7rem] font-semibold tracking-[0.18em]">EDUCATION</h2>
+    <p class="text-sm font-medium">Hansung University</p>
+    <p class="sidebar-secondary mt-1 text-sm leading-5">B.S. in Computer Engineering</p>
+    <p class="sidebar-secondary mt-1 text-sm">2020 — 2025</p>
+  </section>
+  <p class="sidebar-secondary mt-auto pt-8 text-xs leading-5">Seoul, Republic of Korea<br />Open to AI engineering opportunities.</p>
+</nav>
 
-<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
-const activeItemElem = document.getElementById(sideBarActiveItemID);
-activeItemElem && activeItemElem.classList.add(activeClass);
+<script define:vars={{ sideBarActiveItemID, activeClass }}>
+  const activeItem = document.getElementById(sideBarActiveItemID);
+  activeItem?.classList.add(...activeClass.split(" "));
 </script>

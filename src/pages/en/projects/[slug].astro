@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { projectCasesEn } from "../../../data/projectCasesEn";
+import type { ProjectCase } from "../../../data/projectCases";
+
+export function getStaticPaths() {
+  return projectCasesEn.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: ProjectCase };
+const description = `${project.summary} A detailed case study covering the problem, contributions, technical decisions, and outcomes.`;
+---
+
+<BaseLayout locale="en" includeSidebar={false} title={`${project.title} | Soyeon Bae`} description={description} image={null}>
+  <article class="case-study">
+    <a class="case-back" href="/en/#projects">← Selected Work</a>
+    <header class="case-hero">
+      <p class="eyebrow">{project.kicker}</p>
+      <h1>{project.title}</h1>
+      <p class="case-summary">{project.summary}</p>
+      <div class="case-meta"><div><span>Period</span><strong>{project.period}</strong></div><div><span>Role</span><strong>{project.role}</strong></div></div>
+      <div class="case-actions">{project.github && <a class="primary-link" href={project.github} target="_blank" rel="noreferrer">GitHub / PR ↗</a>}{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo Video ↗</a>}</div>
+    </header>
+
+    <section class="case-section"><p class="case-number">01</p><div><h2>Problem</h2><p>{project.problem}</p></div></section>
+    <section class="case-section"><p class="case-number">02</p><div><h2>What I did</h2><ul>{project.contributions.map((item) => <li>{item}</li>)}</ul></div></section>
+    <section class="case-section"><p class="case-number">03</p><div><h2>Technical decisions</h2><ul>{project.decisions.map((item) => <li>{item}</li>)}</ul></div></section>
+    <section class="case-section"><p class="case-number">04</p><div><h2>Results</h2><div class="result-grid">{project.results.map((item) => <p>{item}</p>)}</div></div></section>
+    <section class="case-section"><p class="case-number">05</p><div><h2>Stack</h2><ul class="case-stack">{project.stack.map((item) => <li>{item}</li>)}</ul></div></section>
+
+    <footer class="case-footer"><p>{project.sourceNote}</p><div>{project.github && <a href={project.github} target="_blank" rel="noreferrer">View code and documentation ↗</a>}<a href="/en/#projects">View other projects →</a></div></footer>
+  </article>
+</BaseLayout>

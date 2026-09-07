@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projectCasesEn } from "../../data/projectCasesEn";
+
+const publications = [
+  { title: "Optimizing a Korean Legal QA RAG System through Domain-Specific Embedding Training", venue: "KCSE 2026", role: "First Author", description: "Improved MRR@10 by up to 5.6% through legal-domain embedding fine-tuning and a reproducible retrieval evaluation framework." },
+  { title: "A Study on Fairness Judgment of Contract Terms Using Large Language Models", venue: "KCC 2025", role: "Co-author", description: "Analyzed the potential and limitations of using LLMs to assess the fairness of contract clauses." },
+];
+
+const experience = [
+  { title: "SSAFY Cohort 16", role: "Samsung Software Academy", period: "2026.07 — Present", bullets: ["Developing AI services and financial-domain projects while strengthening software engineering skills."] },
+  { title: "DeepModal", role: "AI Researcher", period: "2025.06 — 2025.12", bullets: ["Built legal data and improved RAG retrieval for the Korea Fair Trade Commission's AI contract-review platform.", "Created 89,994 QA pairs and published two domestic conference papers."] },
+  { title: "Prometheus Cohort 5", role: "AI Project Member", period: "2024.03 — 2025.02", bullets: ["Built projects for crypto white-paper analysis, an LLM deduction game, and personalized story generation."] },
+  { title: "UMC Cohort 5", role: "Frontend Study Lead", period: "2023.09 — 2024.02", bullets: ["Led a React study group and implemented key screens for Career Festival."] },
+  { title: "Sullivan Project", role: "Development Education Volunteer", period: "2020.09 — 2021.02", bullets: ["Created a Flutter diary-app curriculum and taught high-school students and non-majors."] },
+];
+
+const education = [
+  { title: "Hansung University", detail: "B.S. in Computer Engineering", period: "2020.03 — 2025.02" },
+  { title: "LG AI Aimers Cohort 4", detail: "AI/ML Program", period: "2024.01 — 2024.02" },
+  { title: "Naver Coaching Study", detail: "Data Science Program", period: "2024.01 — 2024.02" },
+  { title: "SK AI Data Academy Cohort 1", detail: "Industry Data AI Project", period: "2024.07 — 2024.08" },
+];
+
+const awards = [
+  ["Grand Prize", "2025 Jeju Runcation AI Hackathon", "Wecation"],
+  ["Excellence Award", "2025 Seoul AI Hackathon", "Kaption"],
+  ["Bronze Prize", "2024 Open Source Software Developer Competition", "Hearus"],
+  ["Popularity Award", "2024 Smilegate AI Weeklython", "Toon Surfing"],
+];
+
+const featuredProjectSlugs = ["darkaudit", "finagent-sme", "kaption", "legal-rag"];
+const featuredProjects = projectCasesEn.filter((project) => featuredProjectSlugs.includes(project.slug));
+
+const certifications = ["AWS Certified AI Practitioner", "Engineer Big Data Analysis", "Engineer Information Processing", "ADsP", "SQLD"];
+---
+
+<BaseLayout locale="en" includeSidebar={false} title="Soyeon Bae | AI Engineer" description="Portfolio of Soyeon Bae, an AI engineer building production-ready RAG, agentic AI, and multimodal systems.">
+  <div class="clean-portfolio">
+    <aside class="profile-panel" aria-label="Profile">
+      <div class="profile-monogram" aria-hidden="true">BS</div>
+      <h1>Soyeon Bae</h1>
+      <p class="profile-role">AI Engineer</p>
+      <p class="profile-focus">RAG · Agentic AI<br />Multimodal Systems</p>
+      <div class="profile-block"><strong>Hansung University</strong><span>B.S. in Computer Engineering</span><span>2020 — 2025</span></div>
+      <div class="profile-block"><strong>SSAFY Cohort 16</strong><span>2026.07 — Present</span><span>Seoul, South Korea</span></div>
+      <div class="profile-links">
+        <a href="mailto:flickerlight14@naver.com">Email</a><a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog</a>
+      </div>
+    </aside>
+
+    <div class="portfolio-main">
+      <section class="clean-intro">
+        <p>Hello, I'm Soyeon Bae, an AI engineer.</p>
+        <h2>I turn complex information into<br />grounded, usable AI products.</h2>
+        <p>I connect data construction, retrieval evaluation, model integration, and user interfaces into complete service flows for trust-sensitive domains such as law and finance. I focus not only on better metrics, but also on systems whose failures can be explained and tested again.</p>
+      </section>
+
+      <nav class="clean-nav" aria-label="On this page"><a href="#education">Education</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#awards">Awards</a><a href="#skills">Skills</a></nav>
+
+      <section id="education" class="clean-section"><h2>Education</h2><ul class="clean-list">{education.map((item) => <li class="clean-entry"><div class="entry-row"><strong>{item.title}</strong><time>{item.period}</time></div><p class="clean-meta">{item.detail}</p></li>)}</ul></section>
+
+      <section id="publications" class="clean-section"><h2>Publications</h2><ul class="clean-list">{publications.map((item) => <li class="clean-entry publication-clean"><p><span class="clean-badge">{item.venue}</span><span class="clean-badge muted">{item.role}</span></p><strong>{item.title}</strong><p class="clean-desc">{item.description}</p></li>)}</ul></section>
+
+      <section id="experience" class="clean-section"><h2>Experience</h2><ul class="clean-list">{experience.map((item) => <li class="clean-entry"><div class="entry-row"><strong>{item.title}</strong><time>{item.period}</time></div><p class="clean-meta">{item.role}</p><ul class="clean-bullets">{item.bullets.map((bullet) => <li>{bullet}</li>)}</ul></li>)}</ul></section>
+
+      <section id="projects" class="clean-section">
+        <div class="clean-section-title"><h2>Selected Projects</h2><a href="/en/projects/">View all →</a></div>
+        <ul class="clean-list">{featuredProjects.map((project) => <li class="clean-entry project-clean"><div class="entry-row"><strong><a href={`/en/projects/${project.slug}/`}>{project.title}</a></strong><time>{project.period}</time></div><p class="clean-meta">{project.kicker} · {project.role}</p><p class="clean-desc">{project.summary}</p><div class="clean-links"><a href={`/en/projects/${project.slug}/`}>Case Study</a>{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub / PR</a>}{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo</a>}</div></li>)}</ul>
+      </section>
+
+      <section id="awards" class="clean-section"><h2>Awards</h2><ul class="clean-list award-list">{awards.map(([award, event, project]) => <li class="clean-entry"><span class="clean-badge">{award}</span><strong>{event}</strong><span>{project}</span></li>)}</ul></section>
+
+      <section id="skills" class="clean-section"><h2>Skills &amp; Certifications</h2><div class="skill-lines"><p><strong>AI / Data</strong><span>Python, SQL, PyTorch, TensorFlow, Pandas, RAG, LangChain, RAGAS</span></p><p><strong>Product</strong><span>TypeScript, React, Java, FastAPI, REST API, Chrome Extension</span></p><p><strong>Cloud / Tools</strong><span>AWS, Git, GitHub, Firebase, Selenium, Figma</span></p><p><strong>Credentials</strong><span>{certifications.join(" · ")}</span></p><p><strong>Language</strong><span>TOEIC 915 · TOEIC Speaking Advanced Low</span></p></div></section>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projectCasesEn } from "../../data/projectCasesEn";
+
+const repositories = [
+  ["Book Crowded", "An Android marketplace for used university textbooks", "https://github.com/hypoxisaurea/book_crowded"],
+  ["Career Festival", "An offline event matching and activity-record service", "https://github.com/hypoxisaurea/Career_Festival_Front"],
+  ["Suzip", "An emotion-aware content recommendation diary", "https://github.com/hypoxisaurea/SUZIP-Frontend"],
+  ["Toon Surfing", "An AI-powered webtoon scene search service", "https://github.com/hypoxisaurea/toonsurfing_frontend"],
+];
+---
+
+<BaseLayout locale="en" includeSidebar={false} title="Projects | Soyeon Bae" description="Detailed AI engineering case studies covering RAG, multimodal systems, agent workflows, and open-source contributions.">
+  <div class="standalone-page">
+    <p class="eyebrow">PROJECTS</p>
+    <h1>From verifiable AI<br />to usable products.</h1>
+    <p class="page-lead">Each case study explains the problem, my responsibilities, technical decisions, and measurable outcomes. Public projects link directly to their code and documentation.</p>
+    <div class="standalone-list">
+      {projectCasesEn.map((project) => (
+        <article>
+          <p class="entry-category">{project.kicker}</p>
+          <h2><a href={`/en/projects/${project.slug}/`}>{project.title} ↗</a></h2>
+          <p>{project.summary}</p>
+          <small>{project.stack.join(" · ")}</small>
+          <div class="project-links"><a href={`/en/projects/${project.slug}/`}>Case Study →</a>{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub / PR ↗</a>}{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo ↗</a>}</div>
+        </article>
+      ))}
+    </div>
+    <h2 class="subpage-heading">Earlier public repositories</h2>
+    <div class="compact-project-grid">{repositories.map(([title, description, url]) => <a href={url} target="_blank" rel="noreferrer"><span>PUBLIC REPOSITORY</span><h3>{title} ↗</h3><p>{description}</p></a>)}</div>
+    <a class="back-link" href="/en/#projects">Back to home →</a>
+  </div>
+</BaseLayout>

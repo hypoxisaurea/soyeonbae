@@ -1,92 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import TimeLineElement from "../components/cv/TimeLine.astro";
+const credentials = ["AWS Certified AI Practitioner", "빅데이터분석기사", "정보처리기사", "ADsP", "SQLD"];
 ---
-
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
+<BaseLayout includeSidebar={false} title="CV | 배소연" sideBarActiveItemID="experience">
+  <div class="standalone-page">
+    <p class="eyebrow">CURRICULUM VITAE</p>
+    <h1>배소연<br /><span>AI Engineer</span></h1>
+    <p class="page-lead">RAG 파이프라인과 Agentic AI를 기반으로 정확성과 신뢰성을 갖춘 서비스를 구현합니다.</p>
+    <div class="cv-grid">
+      <section><h2>Experience</h2><article><strong>SSAFY 16기</strong><time>2026.07 — Present</time><p>Samsung Software Academy</p></article><article><strong>DeepModal · AI Researcher</strong><time>2025.06 — 2025.12</time><p>공정거래위원회 AI 약관 심사 플랫폼의 법령 데이터 구축, 검색 평가, 임베딩 학습을 담당했습니다.</p></article><article><strong>UMC 5기</strong><time>2023.09 — 2024.02</time><p>Frontend 파트 React 스터디장</p></article></section>
+      <section><h2>Education</h2><article><strong>Hansung University</strong><time>2020.03 — 2025.02</time><p>B.S. in Computer Engineering</p></article><article><strong>LG AI Aimers 4기</strong><time>2024.01 — 2024.02</time><p>AI/ML 교육 수료</p></article><article><strong>Naver Coaching Study</strong><time>2024.01 — 2024.02</time><p>Data Science 과정 수료</p></article><article><strong>SK AI Data Academy 1기</strong><time>2024.07 — 2024.08</time><p>통신 장비 이상 감지 및 DRAM 파형 예측 프로젝트</p></article><article><strong>Kiwoom Digital Academy 1기</strong><time>2025.04 — 2025.07</time><p>금융 데이터 분석 과정 · 중도 퇴소</p></article></section>
+      <section><h2>Research</h2><article><strong>KCSE 2026 · 제1저자</strong><p>도메인 특화 임베딩 학습을 활용한 한국어 법률 질의응답 RAG 시스템 최적화 연구</p></article><article><strong>KCC 2025 · 공동저자</strong><p>약관조항에 대한 초거대언어 모델의 공정성판단 연구</p></article></section>
+      <section><h2>Credentials</h2><p>{credentials.join(" · ")}</p><p class="mt-3">TOEIC 915 · TOEIC Speaking Advanced Low</p></section>
+    </div>
+    <a class="back-link" href="/#experience">전체 포트폴리오에서 보기 →</a>
   </div>
-
-  <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
-  </div>
-
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
-
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-  </ul>
 </BaseLayout>
