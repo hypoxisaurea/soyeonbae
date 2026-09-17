@@ -1,0 +1,43 @@
+---
+const { locale = "ko" } = Astro.props;
+const en = locale === "en";
+const credentials = [
+  ["AWS Certified AI Practitioner", "Amazon", "2025-12-08"],
+  [en ? "Engineer Big Data Analysis" : "빅데이터분석기사", en ? "Korea Data Agency" : "한국데이터산업진흥원", "2025-07-11"],
+  [en ? "Engineer Information Processing" : "정보처리기사", en ? "HRD Korea" : "한국산업인력공단", "2025-12-24"],
+  ["ADsP", en ? "Korea Data Agency" : "한국데이터산업진흥원", "2024-09-06"],
+  ["SQLD", en ? "Korea Data Agency" : "한국데이터산업진흥원", "2025-04-04"],
+];
+---
+<div class="profile-details">
+  <section>
+    <h2>{en ? "Open Source" : "오픈소스 기여"}</h2>
+    <h3>AutoRAG · NVIDIA Reranker</h3>
+    <p>{en ? "Joined Open Source Contribution Group Cohort 10 in January 2026. Implemented a NVIDIA reranker API module and wrote unit tests covering edge cases." : "2026년 1월 오픈소스 기여모임 10기에 참여해 NVIDIA reranker API 모듈을 구현하고, 다양한 예외 상황을 검증하는 유닛 테스트를 작성했습니다."}</p>
+    <a href="https://github.com/Marker-Inc-Korea/AutoRAG/pull/1199" target="_blank" rel="noreferrer">PR #1199 · {en ? "Merged March 10, 2026" : "2026.03.10 병합"} ↗</a>
+  </section>
+  <section>
+    <h2>{en ? "Community & Teaching" : "커뮤니티와 교육"}</h2>
+    <article><h3>Prometheus · 2024.03–2025.02</h3><p>{en ? "Embedded crypto white papers and grouped coins with K-Means. Tuned agent prompts and built React/TypeScript interfaces for an LLM detective game. Built the frontend and FastAPI model serving for a story and illustration generator." : "암호화폐 백서를 임베딩하고 K-Means로 코인을 그룹화했습니다. LLM 추리게임의 에이전트 프롬프트 튜닝과 React·TypeScript 프론트엔드를 맡았고, 동화·삽화 생성 프로젝트에서는 프론트엔드와 FastAPI 모델 서빙을 구현했습니다."}</p></article>
+    <article><h3>{en ? "Sullivan Project" : "설리번 프로젝트"} · 2020.09–2021.02</h3><p>{en ? "Designed a Flutter diary-app curriculum and taught UI composition and state management through hands-on exercises for high-school students and non-majors." : "고등학생과 비전공 대학생을 위한 Flutter 일기장 앱 교육을 기획했습니다. 커리큘럼과 자료를 제작하고 UI 구성·상태관리를 실습 중심으로 지도했습니다."}</p></article>
+  </section>
+  <section>
+    <h2>{en ? "Certifications & Languages" : "자격증과 어학"}</h2>
+    <ul>{credentials.map(([title, issuer, date]) => <li><div><strong>{title}</strong><span>{issuer}</span></div><time datetime={date}>{date.replaceAll("-", ".")}</time></li>)}</ul>
+    <p>TOEIC 915/990 · 2025.03.30<br />TOEIC Speaking Advanced Low · 2025.05.18</p>
+  </section>
+</div>
+<style>
+  .profile-details { margin-top: 40px; }
+  section + section { margin-top: 36px; }
+  h2 { margin-bottom: 20px; font-size: 1.35rem; font-weight: 700; }
+  h3 { font-weight: 650; font-size: 1rem; }
+  p { margin-top: 10px; color: var(--secondary); font-size: .94rem; line-height: 1.85; }
+  article + article { margin-top: 24px; }
+  a { display: inline-block; margin-top: 12px; color: var(--accent); font-size: .85rem; text-underline-offset: 4px; }
+  ul { padding: 0; list-style: none; }
+  li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); font-size: .88rem; }
+  li span { display: block; margin-top: 4px; color: var(--secondary); font-size: .78rem; }
+  time { flex-shrink: 0; color: var(--secondary); font-size: .8rem; }
+  @media (max-width: 420px) { li { flex-direction: column; gap: 6px; } }
+</style>

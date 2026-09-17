@@ -125,7 +125,9 @@ export const projectCases: ProjectCase[] = [
       "법률 특유의 유사 표현을 구분하지 못하는 사례를 모아 도메인 학습 데이터로 활용했습니다.",
     ],
     results: [
-      "MRR@10 최대 5.6% 개선",
+      "MRR@10 최대 약 5.6% 상대 개선 (KoE5: 0.7187 → 0.7590)",
+      "KoE5 Recall@10: 0.8203 → 0.8543 · Snowflake Recall@10: 0.8166 → 0.8512",
+      "Snowflake MRR@10: 0.7214 → 0.7599",
       "KCSE 2026 제1저자 논문 게재",
       "KCC 2025 공동저자 논문 게재",
       "약관 검토 업무에 적용 가능한 평가 체계 구축",
@@ -191,6 +193,8 @@ export const projectCases: ProjectCase[] = [
       "PM과 AI engineering 역할로 접근성 문제와 핵심 학습 흐름을 정의했습니다.",
       "Whisper와 OpenAI API를 LangChain으로 연결해 실시간 STT와 자막 전처리를 구현했습니다.",
       "수업 텍스트에서 복습 문제를 자동 생성하는 기능을 개발했습니다.",
+      "6인 팀에서 음성 데이터 세그먼트 처리 로직을 분석하고 추론 파이프라인과 백엔드 연동 인터페이스 설계에 기여했습니다.",
+      "Whisper 음성 인식 결과를 Llama 3로 교정하고 LangChain을 통해 문제를 JSON 형태로 생성·전달하는 흐름을 구성했습니다.",
     ],
     decisions: [
       "자막 제공에서 끝내지 않고 하이라이팅과 문제 생성을 연결해 수업 후 복습까지 지원했습니다.",
@@ -198,8 +202,70 @@ export const projectCases: ProjectCase[] = [
     ],
     results: ["2024 공개 SW 개발자대회 동상", "실시간 STT와 생성형 AI를 결합한 접근성 서비스 구현"],
     stack: ["Python", "Whisper", "LangChain", "OpenAI API", "FastAPI", "React", "Spring", "AWS"],
+    github: "https://github.com/TEAM-Hearus",
     award: "2024 공개 SW 개발자대회 동상",
     sourceNote: "이력서와 포트폴리오의 담당 역할을 기준으로 정리했습니다.",
+  },
+  {
+    "slug": "crypto-whitepaper",
+    "title": "암호화폐 백서 기반 유사도 분석",
+    "kicker": "NLP · Clustering · Time Series",
+    "period": "2024.03 — 2024.08",
+    "role": "텍스트 전처리 · 임베딩 · 예측 모델 실험",
+    "summary": "암호화폐 백서의 의미적 유사도로 코인을 그룹화하고, 같은 군집 내 가격 예측 모델 전이학습 가능성을 실험한 프로젝트입니다.",
+    "problem": "백서 내용이 유사한 코인이 가격 움직임에서도 공통 특성을 보이는지 검토하고자 했습니다.",
+    "contributions": [
+      "백서 PDF에서 텍스트를 추출·전처리해 분석 데이터셋을 구축했습니다.",
+      "CryptoBERT 임베딩과 K=7의 K-Means 클러스터링으로 코인을 그룹화했습니다.",
+      "군집별 시계열이 긴 코인을 선정해 LSTM·BiLSTM·GRU·BiGRU를 학습하고 동일 군집의 다른 코인으로 전이학습을 실험했습니다."
+    ],
+    "decisions": [
+      "텍스트 유사도 기반 그룹화와 시계열 예측을 연결해 군집 단위의 전이 가능성을 비교했습니다.",
+      "GitHub에는 Doc2Vec·DBSCAN 및 불용어·파라미터 조합의 초기 실험도 기록했습니다."
+    ],
+    "results": [
+      "포트폴리오에 기록된 비교 실험에서 GRU가 가장 좋은 예측 결과를 보임",
+      "문서 전처리부터 군집화·시계열 모델 비교까지 실험 수행"
+    ],
+    "stack": [
+      "Python",
+      "Hugging Face",
+      "CryptoBERT",
+      "K-Means",
+      "LSTM",
+      "GRU"
+    ],
+    "github": "https://github.com/hypoxisaurea/bitcoin_nlp",
+    "sourceNote": "제공된 포트폴리오 10–11쪽 기준입니다. 공개 README는 Doc2Vec·DBSCAN 초기 실험을 설명하며, 전체 최종 실험 코드의 공개 여부는 확인하지 않았습니다."
+  },
+  {
+    "slug": "disclosure-diff",
+    "title": "DisclosureDiff",
+    "kicker": "Financial Data · Document Comparison",
+    "period": "공개 MVP",
+    "role": "공시 데이터 비교 프로젝트",
+    "summary": "OpenDART/DART의 유상증자 최초 공시와 정정공시를 연결해 주요 변경사항과 원문 근거를 비교하는 MVP입니다.",
+    "problem": "정정공시에서 바뀐 금액과 일정 등을 확인하려면 최초 공시와 정정 문서의 값을 대조해야 합니다.",
+    "contributions": [
+      "유상증자 정정공시 검색과 후보 데이터 수집 스크립트를 구성했습니다.",
+      "접수번호 또는 추출된 JSON을 입력받아 변경 필드와 전후 값을 비교하도록 구현했습니다."
+    ],
+    "decisions": [
+      "현재 비교 범위를 유상증자 결정 정정공시로 한정했습니다.",
+      "출력에 변화량·변화율·날짜 차이와 원문 근거 위치를 포함했습니다."
+    ],
+    "results": [
+      "공시 접수번호 기반 비교 MVP",
+      "변경사항과 재검토 필요 여부를 구조화해 출력"
+    ],
+    "stack": [
+      "Python",
+      "OpenDART",
+      "JSON",
+      "pytest"
+    ],
+    "github": "https://github.com/hypoxisaurea/Disclosure_Diff",
+    "sourceNote": "공개 README의 구현 범위를 기준으로 정리했습니다. 개인별 기여 비중과 정량 성능은 기재하지 않았습니다."
   },
 ];
 

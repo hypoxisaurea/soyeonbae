@@ -109,7 +109,9 @@ export const projectCasesEn: ProjectCase[] = [
       "Collected failures involving similar legal expressions and reused them as domain training data.",
     ],
     results: [
-      "Improved MRR@10 by up to 5.6%",
+      "Up to approximately 5.6% relative MRR@10 improvement (KoE5: 0.7187 → 0.7590)",
+      "Recall@10: KoE5 0.8203 → 0.8543; Snowflake 0.8166 → 0.8512",
+      "Snowflake MRR@10: 0.7214 → 0.7599",
       "Published as first author at KCSE 2026",
       "Published as co-author at KCC 2025",
       "Established an evaluation framework applicable to contract-review operations",
@@ -175,6 +177,8 @@ export const projectCasesEn: ProjectCase[] = [
       "Defined the accessibility problem and core learning journey as PM and AI engineer.",
       "Connected Whisper and the OpenAI API through LangChain for realtime STT and caption preprocessing.",
       "Developed automatic review-question generation from lecture transcripts.",
+      "Analyzed audio segmentation and contributed to inference pipeline and backend interface design in a six-person team.",
+      "Used Llama 3 to correct Whisper transcripts and LangChain to generate and deliver questions as JSON.",
     ],
     decisions: [
       "Extended captions with highlights and question generation to support post-class review.",
@@ -182,8 +186,70 @@ export const projectCasesEn: ProjectCase[] = [
     ],
     results: ["Bronze Prize, 2024 Open Source Software Developer Competition", "Built an accessibility service combining realtime STT and generative AI"],
     stack: ["Python", "Whisper", "LangChain", "OpenAI API", "FastAPI", "React", "Spring", "AWS"],
+    github: "https://github.com/TEAM-Hearus",
     award: "Bronze Prize, 2024 Open Source Software Developer Competition",
     sourceNote: "Based on responsibilities verified in my resume and portfolio.",
+  },
+  {
+    "slug": "crypto-whitepaper",
+    "title": "Crypto White-paper Similarity",
+    "kicker": "NLP · Clustering · Time Series",
+    "period": "2024.03 — 2024.08",
+    "role": "Text preprocessing · Embeddings · Forecasting experiments",
+    "summary": "Grouped cryptocurrencies by white-paper similarity and explored transferring price-prediction models within each cluster.",
+    "problem": "Investigated whether coins with similar white-paper content also shared useful price-series characteristics.",
+    "contributions": [
+      "Extracted and preprocessed text from white-paper PDFs.",
+      "Grouped coins using CryptoBERT embeddings and K-Means with K=7.",
+      "Trained LSTM, BiLSTM, GRU and BiGRU on coins with longer histories and explored transfer learning within clusters."
+    ],
+    "decisions": [
+      "Connected semantic document grouping with time-series model comparisons.",
+      "Recorded earlier Doc2Vec and DBSCAN experiments in the public repository."
+    ],
+    "results": [
+      "GRU performed best in the comparisons recorded in the portfolio",
+      "Completed experiments spanning text processing, clustering and forecasting"
+    ],
+    "stack": [
+      "Python",
+      "Hugging Face",
+      "CryptoBERT",
+      "K-Means",
+      "LSTM",
+      "GRU"
+    ],
+    "github": "https://github.com/hypoxisaurea/bitcoin_nlp",
+    "sourceNote": "Based on portfolio pages 10–11. The public README documents earlier Doc2Vec/DBSCAN experiments; public availability of the final experiments has not been verified."
+  },
+  {
+    "slug": "disclosure-diff",
+    "title": "DisclosureDiff",
+    "kicker": "Financial Data · Document Comparison",
+    "period": "Public MVP",
+    "role": "Financial filing comparison project",
+    "summary": "An MVP comparing original and corrected rights-offering disclosures from OpenDART/DART, with changes linked to source evidence.",
+    "problem": "Reviewing corrected disclosures requires comparing financial values and schedules against the original filing.",
+    "contributions": [
+      "Built filing search and candidate collection scripts.",
+      "Implemented comparisons from receipt numbers or extracted JSON."
+    ],
+    "decisions": [
+      "Scoped the MVP to corrections of rights-offering decisions.",
+      "Included value changes, rates, date differences and source locations in the output."
+    ],
+    "results": [
+      "Receipt-number comparison MVP",
+      "Structured change summaries and review flags"
+    ],
+    "stack": [
+      "Python",
+      "OpenDART",
+      "JSON",
+      "pytest"
+    ],
+    "github": "https://github.com/hypoxisaurea/Disclosure_Diff",
+    "sourceNote": "Scope follows the public README. Individual contribution percentages and performance metrics are not asserted."
   },
 ];
 
