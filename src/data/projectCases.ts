@@ -11,12 +11,36 @@ export type ProjectCase = {
   results: string[];
   stack: string[];
   github?: string;
+  pr?: string;
   demo?: string;
+  demoKind?: "live" | "video";
   award?: string;
   sourceNote?: string;
 };
 
 export const projectCases: ProjectCase[] = [
+  {
+    slug: "local-hub",
+    title: "Local Hub",
+    kicker: "Travel · Conversational AI · Text-to-SQL",
+    period: "2026",
+    role: "지역 정보 · AI 챗봇 프로젝트",
+    summary: "서울의 여행지·음식점·축제와 커뮤니티 정보를 지도와 AI 챗봇으로 탐색하는 웹 서비스입니다.",
+    problem: "지역 정보를 찾는 질문은 장소 데이터 조회와 커뮤니티 검색처럼 서로 다른 탐색 방식을 필요로 합니다.",
+    contributions: [
+      "Vue 기반 여행·음식점·축제·커뮤니티 화면과 FastAPI API로 구성된 프로젝트입니다.",
+      "챗봇 그래프는 질문 분류 후 Text-to-SQL, 지역 정보 검색, 커뮤니티 검색으로 분기합니다.",
+      "서울 지도에서 카테고리와 검색어에 따라 장소를 조회하는 화면을 제공합니다.",
+    ],
+    decisions: [
+      "LangGraph에서 데이터 조회 경로를 나누고 검색 결과를 답변 생성 단계로 연결합니다.",
+      "챗봇 API를 메인 FastAPI 서버에 통합해 한 서버에서 실행하도록 구성했습니다.",
+    ],
+    results: ["지역 탐색 UI와 질문별 검색 경로 구현", "Vue·FastAPI·LangGraph를 연결한 공개 코드"],
+    stack: ["Vue", "TypeScript", "Vite", "Python", "FastAPI", "LangGraph", "Leaflet"],
+    github: "https://github.com/hypoxisaurea/local_hub",
+    sourceNote: "공개 README, 지도 화면, 챗봇 그래프의 구현 기준입니다. 개인별 담당 범위와 정량 성과는 기재하지 않았습니다.",
+  },
   {
     slug: "darkaudit",
     title: "DarkAudit",
@@ -44,6 +68,8 @@ export const projectCases: ProjectCase[] = [
     ],
     stack: ["Python", "FastAPI", "React", "TypeScript", "OpenAI Responses API", "Playwright", "MSW", "YAML"],
     github: "https://github.com/hypoxisaurea/DarkAudit",
+    demo: "https://dark-audit-seven.vercel.app/",
+    demoKind: "live",
     sourceNote: "공개 저장소 README 기준 현재 구현 범위를 정리했습니다.",
   },
   {
@@ -102,6 +128,7 @@ export const projectCases: ProjectCase[] = [
     stack: ["React 18", "TypeScript", "Chrome Extension MV3", "FastAPI", "Gemini 2.5", "OpenAI Realtime API", "WebRTC", "Pydantic"],
     github: "https://github.com/hypoxisaurea/Kaption",
     demo: "https://youtu.be/Uo4fp2r2WkY",
+    demoKind: "video",
     award: "2025 서울 AI 해커톤 최우수상",
     sourceNote: "공개 저장소 README와 이력서의 담당 역할을 대조해 정리했습니다.",
   },
@@ -155,7 +182,8 @@ export const projectCases: ProjectCase[] = [
     ],
     results: ["AutoRAG 공식 저장소 PR #1199 병합", "NVIDIA reranker 선택지 확장", "예외 조건을 포함한 회귀 테스트 추가"],
     stack: ["Python", "AutoRAG", "NVIDIA API", "Unit Testing", "Open Source Collaboration"],
-    github: "https://github.com/Marker-Inc-Korea/AutoRAG/pull/1199",
+    github: "https://github.com/Marker-Inc-Korea/AutoRAG",
+    pr: "https://github.com/Marker-Inc-Korea/AutoRAG/pull/1199",
     sourceNote: "2026년 3월 10일 공식 저장소에 병합된 Pull Request를 연결했습니다.",
   },
   {

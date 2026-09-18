@@ -1,0 +1,18 @@
+---
+import type { ProjectCase } from "../data/projectCases";
+
+interface Props {
+  project: ProjectCase;
+  class?: string;
+}
+
+const { project, class: className = "project-links" } = Astro.props;
+---
+
+{(project.demo || project.github || project.pr) && (
+  <div class={className}>
+    {project.demo && <a class="primary-link" href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} ${project.demoKind === "video" ? "demo video" : "live demo"}`}>{project.demoKind === "video" ? "Demo Video" : "Live Demo"} ↗</a>}
+    {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} GitHub`}>GitHub ↗</a>}
+    {project.pr && <a href={project.pr} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} pull request`}>PR ↗</a>}
+  </div>
+)}

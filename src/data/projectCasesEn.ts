@@ -2,6 +2,28 @@ import type { ProjectCase } from "./projectCases";
 
 export const projectCasesEn: ProjectCase[] = [
   {
+    slug: "local-hub",
+    title: "Local Hub",
+    kicker: "Travel · Conversational AI · Text-to-SQL",
+    period: "2026",
+    role: "Local Discovery · AI Chatbot Project",
+    summary: "A web service for exploring Seoul destinations, restaurants, festivals, and community information through a map and AI chatbot.",
+    problem: "Local questions need different retrieval paths, from structured place queries to community search.",
+    contributions: [
+      "The project combines Vue travel, restaurant, festival, and community views with FastAPI endpoints.",
+      "The chatbot classifies questions and routes them to Text-to-SQL, local retrieval, or community retrieval.",
+      "A Seoul map supports place discovery by category and search term.",
+    ],
+    decisions: [
+      "LangGraph separates retrieval routes and connects their results to answer generation.",
+      "The chatbot API runs within the main FastAPI application.",
+    ],
+    results: ["Local discovery UI and query-specific retrieval paths implemented", "Public Vue, FastAPI, and LangGraph integration"],
+    stack: ["Vue", "TypeScript", "Vite", "Python", "FastAPI", "LangGraph", "Leaflet"],
+    github: "https://github.com/hypoxisaurea/local_hub",
+    sourceNote: "Based on the public README, map view, and chatbot graph. Individual responsibilities and quantitative results are not asserted.",
+  },
+  {
     slug: "darkaudit",
     title: "DarkAudit",
     kicker: "Multimodal AI · FinTech · UX Compliance",
@@ -28,6 +50,8 @@ export const projectCasesEn: ProjectCase[] = [
     ],
     stack: ["Python", "FastAPI", "React", "TypeScript", "OpenAI Responses API", "Playwright", "MSW", "YAML"],
     github: "https://github.com/hypoxisaurea/DarkAudit",
+    demo: "https://dark-audit-seven.vercel.app/",
+    demoKind: "live",
     sourceNote: "Scope reflects the current implementation documented in the public repository README.",
   },
   {
@@ -86,6 +110,7 @@ export const projectCasesEn: ProjectCase[] = [
     stack: ["React 18", "TypeScript", "Chrome Extension MV3", "FastAPI", "Gemini 2.5", "OpenAI Realtime API", "WebRTC", "Pydantic"],
     github: "https://github.com/hypoxisaurea/Kaption",
     demo: "https://youtu.be/Uo4fp2r2WkY",
+    demoKind: "video",
     award: "Excellence Award, 2025 Seoul AI Hackathon",
     sourceNote: "Based on the public repository README and verified responsibilities from my resume.",
   },
@@ -139,7 +164,8 @@ export const projectCasesEn: ProjectCase[] = [
     ],
     results: ["Merged as AutoRAG PR #1199", "Expanded reranker support with NVIDIA", "Added regression tests covering failure conditions"],
     stack: ["Python", "AutoRAG", "NVIDIA API", "Unit Testing", "Open Source Collaboration"],
-    github: "https://github.com/Marker-Inc-Korea/AutoRAG/pull/1199",
+    github: "https://github.com/Marker-Inc-Korea/AutoRAG",
+    pr: "https://github.com/Marker-Inc-Korea/AutoRAG/pull/1199",
     sourceNote: "Links to the pull request merged into the official repository on March 10, 2026.",
   },
   {

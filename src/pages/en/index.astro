@@ -1,4 +1,5 @@
 ---
+import ProjectResources from "../../components/ProjectResources.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProfileDetails from "../../components/ProfileDetails.astro";
 import AdaptiveProfile from "../../components/AdaptiveProfile.astro";
@@ -50,7 +51,6 @@ const certifications = ["AWS Certified AI Practitioner", "Engineer Big Data Anal
       <aside class="v2-profile" aria-label="Profile and page navigation">
         <div class="v2-profile-head"><img class="v2-profile-photo" src="/IMG_6696.JPG" alt="Portrait of Soyeon Bae" width="190" height="238" loading="lazy" /><div><h2>Soyeon Bae</h2><p>AI Engineer</p></div></div>
         <p class="v2-profile-note">I turn complex information into grounded, usable AI products.</p>
-        <div class="v2-profile-facts"><p><span>BASE</span>Seoul, South Korea</p><p><span>NOW</span>SSAFY Cohort 16</p><p><span>EDU</span>Hansung University</p></div>
         <nav class="v2-index" aria-label="On this page"><a href="#about"><span>01</span>About</a><a href="#projects"><span>02</span>Projects</a><a href="#research"><span>03</span>Research</a><a href="#experience"><span>04</span>Experience</a><a href="#credentials"><span>05</span>Credentials</a><a href="#community"><span>06</span>Community</a></nav>
         <div class="v2-social"><a href="mailto:flickerlight14@naver.com">Email ↗</a><a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog ↗</a></div>
       </aside>
@@ -71,7 +71,7 @@ const certifications = ["AWS Certified AI Practitioner", "Engineer Big Data Anal
                   <ul class="v2-project-stack" aria-label="Key technologies">{project.stack.slice(0, 4).map((technology) => <li>{technology}</li>)}</ul>
                   <div class="v2-project-foot"><span>{project.role}</span><span>Case study →</span></div>
                 </a>
-                {(project.github || project.demo) && <div class="v2-project-resources">{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub ↗</a>}{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo ↗</a>}</div>}
+                <ProjectResources project={project} class="v2-project-resources" />
               </article>
             ))}</div>
           </div>

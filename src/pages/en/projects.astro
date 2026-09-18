@@ -1,4 +1,5 @@
 ---
+import ProjectResources from "../../components/ProjectResources.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { projectCasesEn } from "../../data/projectCasesEn";
 
@@ -22,7 +23,7 @@ const repositories = [
           <h2><a href={`/en/projects/${project.slug}/`}>{project.title} ↗</a></h2>
           <p>{project.summary}</p>
           <small>{project.stack.join(" · ")}</small>
-          <div class="project-links"><a href={`/en/projects/${project.slug}/`}>Case Study →</a>{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub / PR ↗</a>}{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo ↗</a>}</div>
+          <div class="project-links"><a href={`/en/projects/${project.slug}/`}>Case Study →</a><ProjectResources project={project} class="project-resource-links" /></div>
         </article>
       ))}
     </div>

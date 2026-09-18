@@ -1,4 +1,5 @@
 ---
+import ProjectResources from "../../components/ProjectResources.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { projectCases, type ProjectCase } from "../../data/projectCases";
 
@@ -21,10 +22,7 @@ const description = `${project.summary} 문제 정의, 기여 내용, 기술적 
         <div><span>Period</span><strong>{project.period}</strong></div>
         <div><span>Role</span><strong>{project.role}</strong></div>
       </div>
-      <div class="case-actions">
-        {project.github && <a class="primary-link" href={project.github} target="_blank" rel="noreferrer">GitHub / PR ↗</a>}
-        {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo Video ↗</a>}
-      </div>
+      <ProjectResources project={project} class="case-actions" />
     </header>
 
     <section class="case-section">

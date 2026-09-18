@@ -1,4 +1,5 @@
 ---
+import ProjectResources from "../../../components/ProjectResources.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { projectCasesEn } from "../../../data/projectCasesEn";
 import type { ProjectCase } from "../../../data/projectCases";
@@ -19,7 +20,7 @@ const description = `${project.summary} A detailed case study covering the probl
       <h1>{project.title}</h1>
       <p class="case-summary">{project.summary}</p>
       <div class="case-meta"><div><span>Period</span><strong>{project.period}</strong></div><div><span>Role</span><strong>{project.role}</strong></div></div>
-      <div class="case-actions">{project.github && <a class="primary-link" href={project.github} target="_blank" rel="noreferrer">GitHub / PR ↗</a>}{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo Video ↗</a>}</div>
+      <ProjectResources project={project} class="case-actions" />
     </header>
 
     <section class="case-section"><p class="case-number">01</p><div><h2>Problem</h2><p>{project.problem}</p></div></section>
