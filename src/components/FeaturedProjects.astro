@@ -1,0 +1,32 @@
+---
+import { featuredProjects } from "../data/featuredProjects";
+import type { ProjectCase } from "../data/projectCases";
+import ProjectResources from "./ProjectResources.astro";
+
+interface Props {
+  projects: ProjectCase[];
+  locale?: "ko" | "en";
+}
+const { projects, locale = "ko" } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
+---
+
+<div class="v2-projects">
+  {featuredProjects.map((card) => {
+    const project = projects.find((item) => item.slug === card.slug);
+    return project && (
+      <article class="v2-project">
+        <h3><a href={`${prefix}/projects/${card.slug}/`}>{card.title}</a></h3>
+        <p class="v2-project-summary">{card.description[locale]}</p>
+        <p class="v2-project-result">{card.highlight[locale]}</p>
+        <ul class="v2-project-stack" aria-label={locale === "en" ? "Key technologies" : "주요 기술"}>
+          {card.stack.map((technology) => <li>{technology}</li>)}
+        </ul>
+        <div class="v2-project-foot">
+          <a class="v2-project-details" href={`${prefix}/projects/${card.slug}/`} aria-label={`${card.title} ${locale === "en" ? "details" : "자세히 보기"}`}>{locale === "en" ? "View details" : "자세히 보기"} →</a>
+          <ProjectResources project={project} class="v2-project-resources" />
+        </div>
+      </article>
+    );
+  })}
+</div>

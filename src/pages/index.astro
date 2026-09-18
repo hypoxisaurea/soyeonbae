@@ -1,8 +1,7 @@
 ---
-import ProjectResources from "../components/ProjectResources.astro";
+import FeaturedProjects from "../components/FeaturedProjects.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProfileDetails from "../components/ProfileDetails.astro";
-import AdaptiveProfile from "../components/AdaptiveProfile.astro";
 import { projectCases } from "../data/projectCases";
 
 const publications = [
@@ -42,35 +41,34 @@ const awards = [
   ["인기상", "2024 스마일게이트 AI 위클리톤", "Toon Surfing"],
 ];
 
-const featuredProjectSlugs = ["darkaudit", "finagent-sme", "kaption", "legal-rag", "autorag-nvidia-reranker", "hearus"];
-const featuredProjects = projectCases.filter((project) => featuredProjectSlugs.includes(project.slug));
 
-const certifications = ["AWS Certified AI Practitioner", "빅데이터분석기사", "정보처리기사", "ADsP", "SQLD"];
 ---
 
 <BaseLayout includeSidebar={false} title="배소연 | AI Engineer" description="RAG, Agentic AI, 멀티모달 시스템을 실제 서비스로 구현하는 AI Engineer 배소연의 포트폴리오">
-  <AdaptiveProfile />
   <article class="portfolio-v2">
     <header class="v2-cover" id="top">
-      <div class="v2-cover-meta"><span>PORTFOLIO · 2026</span><span>BAE SOYEON</span></div>
+      <div class="v2-cover-meta"><a href="#top">BAE SOYEON</a><span>AI ENGINEER · PORTFOLIO 2026</span></div>
       <div class="v2-cover-copy">
-        <p>문제를 정의하고, 근거를 설계하고,<br />끝까지 작동하게 만드는</p>
-        <h1>AI<br />ENGINEER</h1>
+        <h1>근거 있는 AI를<br />설계합니다.</h1>
+        <p class="v2-cover-signature">Building <em>trustworthy AI.</em></p>
       </div>
       <div class="v2-cover-bottom">
         <p>RAG · Agentic AI · Multimodal Systems</p>
-        <a href="#projects">Selected work <span aria-hidden="true">↓</span></a>
+        <div class="v2-cover-intro">
+          <p>안녕하세요, AI 엔지니어 배소연입니다. 복잡한 데이터를 이해하고, 판단의 근거를 설계하며, 실제로 사용할 수 있는 AI 서비스를 만듭니다.</p>
+          <div class="v2-cover-actions"><a class="v2-cover-primary" href="#projects">프로젝트 보기 <span aria-hidden="true">↗</span></a><a href="mailto:flickerlight14@naver.com">연락하기 <span aria-hidden="true">↗</span></a></div>
+        </div>
       </div>
     </header>
 
     <div class="v2-layout">
       <aside class="v2-profile" aria-label="프로필과 페이지 내 이동">
-        <div class="v2-profile-head"><img class="v2-profile-photo" src="/IMG_6696.JPG" alt="배소연 프로필 사진" width="190" height="238" loading="lazy" /><div><h2>배소연</h2><p>AI Engineer</p></div></div>
-        <p class="v2-profile-note">복잡한 정보를 근거가 분명하고 실제로 사용할 수 있는 AI로 만듭니다.</p>
+        <div class="v2-profile-head"><img class="v2-profile-photo" src="/IMG_6696.JPG" alt="배소연 프로필 사진" width="190" height="238" loading="lazy" /><div><h2>배소연</h2></div></div>
+
         <nav class="v2-index" aria-label="페이지 내 이동">
-          <a href="#about"><span>01</span>About</a><a href="#projects"><span>02</span>Projects</a><a href="#research"><span>03</span>Research</a><a href="#experience"><span>04</span>Experience</a><a href="#credentials"><span>05</span>Credentials</a><a href="#community"><span>06</span>Community</a>
+          <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a>
         </nav>
-        <div class="v2-social"><a href="mailto:flickerlight14@naver.com">Email ↗</a><a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog ↗</a></div>
+        <div class="v2-social"><a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog ↗</a></div>
       </aside>
 
       <div class="v2-content">
@@ -87,20 +85,7 @@ const certifications = ["AWS Certified AI Practitioner", "빅데이터분석기�
           <div class="v2-section-label"><span>02</span><p>SELECTED PROJECTS</p></div>
           <div class="v2-section-body">
             <div class="v2-heading-row"><h2>Selected Projects</h2><a href="/projects/">전체 프로젝트 보기 ↗</a></div>
-            <div class="v2-projects">
-              {featuredProjects.map((project, index) => (
-                <article class="v2-project">
-                  <a class="v2-project-main" href={`/projects/${project.slug}/`} aria-label={`${project.title} 케이스 스터디`}>
-                    <div class="v2-project-top"><span>{String(index + 1).padStart(2, "0")}</span><time>{project.period}</time></div>
-                    <p>{project.kicker}</p><h3>{project.title}</h3><p class="v2-project-summary">{project.summary}</p>
-                    <p class="v2-project-result">{project.results[0]}</p>
-                    <ul class="v2-project-stack" aria-label="주요 기술">{project.stack.slice(0, 4).map((technology) => <li>{technology}</li>)}</ul>
-                    <div class="v2-project-foot"><span>{project.role}</span><span>Case study →</span></div>
-                  </a>
-                  <ProjectResources project={project} class="v2-project-resources" />
-                </article>
-              ))}
-            </div>
+            <FeaturedProjects projects={projectCases} locale="ko" />
           </div>
         </section>
 
@@ -115,13 +100,13 @@ const certifications = ["AWS Certified AI Practitioner", "빅데이터분석기�
         </section>
 
         <section id="credentials" class="v2-section">
-          <div class="v2-section-label"><span>05</span><p>CREDENTIALS</p></div>
+          <div class="v2-section-label"><span>05</span><p>EDUCATION &amp; AWARDS</p></div>
           <div class="v2-section-body">
             <div class="v2-credential-grid">
               <div><h2>Education</h2>{education.map((item) => <article><time>{item.period}</time><h3>{item.title}</h3><p>{item.detail}</p></article>)}</div>
               <div><h2>Awards</h2>{awards.map(([award, event, project]) => <article><span class="v2-tag">{award}</span><h3>{event}</h3><p>{project}</p></article>)}</div>
             </div>
-            <div class="v2-skills"><h2>Skills &amp; Certifications</h2><p><strong>AI / DATA</strong>Python, SQL, PyTorch, TensorFlow, Pandas, RAG, LangChain, RAGAS</p><p><strong>PRODUCT</strong>TypeScript, React, Java, FastAPI, REST API, Chrome Extension</p><p><strong>CLOUD / TOOLS</strong>AWS, Git, GitHub, Firebase, Selenium, Figma</p><p><strong>CREDENTIALS</strong>{certifications.join(" · ")}</p><p><strong>LANGUAGE</strong>TOEIC 915 · TOEIC Speaking Advanced Low</p></div>
+            <div class="v2-skills"><h2>Skills</h2><p><strong>AI / DATA</strong>Python, SQL, PyTorch, TensorFlow, Pandas, RAG, LangChain, RAGAS</p><p><strong>PRODUCT</strong>TypeScript, React, Java, FastAPI, REST API, Chrome Extension</p><p><strong>CLOUD / TOOLS</strong>AWS, Git, GitHub, Firebase, Selenium, Figma</p></div>
           </div>
         </section>
 

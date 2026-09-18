@@ -1,8 +1,7 @@
 ---
-import ProjectResources from "../../components/ProjectResources.astro";
+import FeaturedProjects from "../../components/FeaturedProjects.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProfileDetails from "../../components/ProfileDetails.astro";
-import AdaptiveProfile from "../../components/AdaptiveProfile.astro";
 import { projectCasesEn } from "../../data/projectCasesEn";
 
 const publications = [
@@ -32,27 +31,29 @@ const awards = [
   ["Popularity Award", "2024 Smilegate AI Weeklython", "Toon Surfing"],
 ];
 
-const featuredProjectSlugs = ["darkaudit", "finagent-sme", "kaption", "legal-rag", "autorag-nvidia-reranker", "hearus"];
-const featuredProjects = projectCasesEn.filter((project) => featuredProjectSlugs.includes(project.slug));
 
-const certifications = ["AWS Certified AI Practitioner", "Engineer Big Data Analysis", "Engineer Information Processing", "ADsP", "SQLD"];
 ---
 
 <BaseLayout locale="en" includeSidebar={false} title="Soyeon Bae | AI Engineer" description="Portfolio of Soyeon Bae, an AI engineer building production-ready RAG, agentic AI, and multimodal systems.">
-  <AdaptiveProfile />
   <article class="portfolio-v2">
     <header class="v2-cover" id="top">
-      <div class="v2-cover-meta"><span>PORTFOLIO · 2026</span><span>BAE SOYEON</span></div>
-      <div class="v2-cover-copy"><p>Defining the problem, designing the evidence,<br />and making the system work end to end.</p><h1>AI<br />ENGINEER</h1></div>
-      <div class="v2-cover-bottom"><p>RAG · Agentic AI · Multimodal Systems</p><a href="#projects">Selected work <span aria-hidden="true">↓</span></a></div>
+      <div class="v2-cover-meta"><a href="#top">BAE SOYEON</a><span>AI ENGINEER · PORTFOLIO 2026</span></div>
+      <div class="v2-cover-copy"><h1>Building AI<br />you can <em>trust.</em></h1><p class="v2-cover-signature">From evidence to everyday use.</p></div>
+      <div class="v2-cover-bottom">
+        <p>RAG · Agentic AI · Multimodal Systems</p>
+        <div class="v2-cover-intro">
+          <p>I'm Soyeon Bae, an AI engineer. I turn complex data into grounded decisions and build AI services people can use, from retrieval to the interface.</p>
+          <div class="v2-cover-actions"><a class="v2-cover-primary" href="#projects">See my work <span aria-hidden="true">↗</span></a><a href="mailto:flickerlight14@naver.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
     </header>
 
     <div class="v2-layout">
       <aside class="v2-profile" aria-label="Profile and page navigation">
-        <div class="v2-profile-head"><img class="v2-profile-photo" src="/IMG_6696.JPG" alt="Portrait of Soyeon Bae" width="190" height="238" loading="lazy" /><div><h2>Soyeon Bae</h2><p>AI Engineer</p></div></div>
-        <p class="v2-profile-note">I turn complex information into grounded, usable AI products.</p>
-        <nav class="v2-index" aria-label="On this page"><a href="#about"><span>01</span>About</a><a href="#projects"><span>02</span>Projects</a><a href="#research"><span>03</span>Research</a><a href="#experience"><span>04</span>Experience</a><a href="#credentials"><span>05</span>Credentials</a><a href="#community"><span>06</span>Community</a></nav>
-        <div class="v2-social"><a href="mailto:flickerlight14@naver.com">Email ↗</a><a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog ↗</a></div>
+        <div class="v2-profile-head"><img class="v2-profile-photo" src="/IMG_6696.JPG" alt="Portrait of Soyeon Bae" width="190" height="238" loading="lazy" /><div><h2>Soyeon Bae</h2></div></div>
+
+        <nav class="v2-index" aria-label="On this page"><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a></nav>
+        <div class="v2-social"><a href="https://github.com/hypoxisaurea" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/soyeon-bae-55abb82b5" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://the14voyager.tistory.com" target="_blank" rel="noreferrer">Blog ↗</a></div>
       </aside>
 
       <div class="v2-content">
@@ -62,18 +63,7 @@ const certifications = ["AWS Certified AI Practitioner", "Engineer Big Data Anal
           <div class="v2-section-label"><span>02</span><p>SELECTED PROJECTS</p></div>
           <div class="v2-section-body">
             <div class="v2-heading-row"><h2>Selected Projects</h2><a href="/en/projects/">View all projects ↗</a></div>
-            <div class="v2-projects">{featuredProjects.map((project, index) => (
-              <article class="v2-project">
-                <a class="v2-project-main" href={`/en/projects/${project.slug}/`} aria-label={`${project.title} case study`}>
-                  <div class="v2-project-top"><span>{String(index + 1).padStart(2, "0")}</span><time>{project.period}</time></div>
-                  <p>{project.kicker}</p><h3>{project.title}</h3><p class="v2-project-summary">{project.summary}</p>
-                  <p class="v2-project-result">{project.results[0]}</p>
-                  <ul class="v2-project-stack" aria-label="Key technologies">{project.stack.slice(0, 4).map((technology) => <li>{technology}</li>)}</ul>
-                  <div class="v2-project-foot"><span>{project.role}</span><span>Case study →</span></div>
-                </a>
-                <ProjectResources project={project} class="v2-project-resources" />
-              </article>
-            ))}</div>
+            <FeaturedProjects projects={projectCasesEn} locale="en" />
           </div>
         </section>
 
@@ -81,7 +71,7 @@ const certifications = ["AWS Certified AI Practitioner", "Engineer Big Data Anal
 
         <section id="experience" class="v2-section"><div class="v2-section-label"><span>04</span><p>EXPERIENCE</p></div><div class="v2-section-body"><h2 class="v2-display-heading">Experience</h2><div class="v2-timeline">{experience.map((item) => <article><time>{item.period}</time><div><h3>{item.title}</h3><p class="v2-role">{item.role}</p>{item.bullets.map((bullet) => <p>{bullet}</p>)}</div></article>)}</div></div></section>
 
-        <section id="credentials" class="v2-section"><div class="v2-section-label"><span>05</span><p>CREDENTIALS</p></div><div class="v2-section-body"><div class="v2-credential-grid"><div><h2>Education</h2>{education.map((item) => <article><time>{item.period}</time><h3>{item.title}</h3><p>{item.detail}</p></article>)}</div><div><h2>Awards</h2>{awards.map(([award, event, project]) => <article><span class="v2-tag">{award}</span><h3>{event}</h3><p>{project}</p></article>)}</div></div><div class="v2-skills"><h2>Skills &amp; Certifications</h2><p><strong>AI / DATA</strong>Python, SQL, PyTorch, TensorFlow, Pandas, RAG, LangChain, RAGAS</p><p><strong>PRODUCT</strong>TypeScript, React, Java, FastAPI, REST API, Chrome Extension</p><p><strong>CLOUD / TOOLS</strong>AWS, Git, GitHub, Firebase, Selenium, Figma</p><p><strong>CREDENTIALS</strong>{certifications.join(" · ")}</p><p><strong>LANGUAGE</strong>TOEIC 915 · TOEIC Speaking Advanced Low</p></div></div></section>
+        <section id="credentials" class="v2-section"><div class="v2-section-label"><span>05</span><p>EDUCATION &amp; AWARDS</p></div><div class="v2-section-body"><div class="v2-credential-grid"><div><h2>Education</h2>{education.map((item) => <article><time>{item.period}</time><h3>{item.title}</h3><p>{item.detail}</p></article>)}</div><div><h2>Awards</h2>{awards.map(([award, event, project]) => <article><span class="v2-tag">{award}</span><h3>{event}</h3><p>{project}</p></article>)}</div></div><div class="v2-skills"><h2>Skills</h2><p><strong>AI / DATA</strong>Python, SQL, PyTorch, TensorFlow, Pandas, RAG, LangChain, RAGAS</p><p><strong>PRODUCT</strong>TypeScript, React, Java, FastAPI, REST API, Chrome Extension</p><p><strong>CLOUD / TOOLS</strong>AWS, Git, GitHub, Firebase, Selenium, Figma</p></div></div></section>
 
         <section class="v2-section" id="community"><div class="v2-section-label"><span>06</span><p>COMMUNITY & OPEN SOURCE</p></div><div class="v2-section-body"><ProfileDetails locale="en" /></div></section>
 
