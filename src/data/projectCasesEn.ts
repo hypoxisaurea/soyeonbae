@@ -3,6 +3,12 @@ import type { ProjectCase } from "./projectCases";
 export const projectCasesEn: ProjectCase[] = [
   {
     slug: "local-hub",
+    contributionScope: "project",
+    stackDescription: "Vue and Leaflet provide map-based discovery, while FastAPI and LangGraph connect question classification, data retrieval, and answer generation.",
+    learnings: [
+      { title: "Routing questions to the right data", description: "The implementation separates structured place queries from community search. It illustrates how the information a question needs can guide the choice of data source and retrieval method." },
+      { title: "Connecting discovery and conversation", description: "The service combines a map with a chatbot, offering both direct exploration and question-based discovery." },
+    ],
     title: "Local Hub",
     kicker: "Travel · Conversational AI · Text-to-SQL",
     period: "2026",
@@ -25,6 +31,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     slug: "darkaudit",
+    stackDescription: "The OpenAI Responses API analyzes screens, YAML holds detection rules, and React with FastAPI provides the review workflow. Playwright and MSW support testing.",
+    learnings: [
+      { title: "Defining the boundary between models and rules", description: "I separated measurable signals from contextual interpretation and kept criteria outside the model. This made the division between model judgment and rule-based checks explicit." },
+      { title: "Testing without a live model", description: "A fake provider and paired risky/clean examples made it possible to exercise both the analysis and the service flow. The work connected model integration with the design of its test environment." },
+    ],
     title: "DarkAudit",
     kicker: "Multimodal AI · FinTech · UX Compliance",
     period: "2026",
@@ -56,6 +67,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     slug: "finagent-sme",
+    stackDescription: "LangGraph models analysis dependencies; PostgreSQL and Chroma hold structured data and retrieval evidence. FastAPI and Streamlit expose long-running jobs, while Langfuse and RAGAS support tracing and evaluation.",
+    learnings: [
+      { title: "Collaboration starts with dependencies", description: "I defined the inputs and prerequisites for each analysis stage. The design centered on which evidence a stage passes to the next decision." },
+      { title: "Failure is part of the user journey", description: "Progress logs, status queries, regeneration, and blocking invalid results were designed together. Long-running analysis required attention to waiting and failure as well as successful output." },
+    ],
     title: "FinAgent-SME",
     kicker: "Multi-agent · Credit Assessment · RAG",
     period: "2026",
@@ -85,6 +101,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     slug: "kaption",
+    stackDescription: "React and TypeScript power the Chrome Side Panel; Gemini 2.5 analyzes video context. The OpenAI Realtime API and WebRTC handle voice conversation, with FastAPI issuing session tokens.",
+    learnings: [
+      { title: "Designing where AI enters the experience", description: "The Side Panel and timestamped checkpoints place explanations alongside the video. When and where users encounter an answer mattered to the learning flow." },
+      { title: "Turning analysis into a next action", description: "Cultural explanations lead into recaps, conversation, and quizzes. I connected generated information to opportunities to speak and check understanding." },
+    ],
     title: "Kaption",
     kicker: "Multimodal AI · Chrome Extension · Realtime",
     period: "2025.09 — 2025.10",
@@ -116,6 +137,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     slug: "legal-rag",
+    stackDescription: "Python and Haystack support legal data processing and retrieval, alongside domain embedding fine-tuning. MRR, NDCG, RAGAS, and other metrics separate retrieval ranking from answer quality.",
+    learnings: [
+      { title: "Making experiments comparable", description: "I controlled dataset versions and experimental conditions before comparing models. Consistent training and evaluation criteria were necessary to explain performance changes." },
+      { title: "Using failures to guide learning", description: "I distinguished missing relevant provisions from ranking them too low, then used failures involving similar legal language as domain training examples." },
+    ],
     title: "Legal Contract Review RAG",
     kicker: "Legal AI · Retrieval Evaluation · Research",
     period: "2025",
@@ -146,6 +172,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     slug: "autorag-nvidia-reranker",
+    stackDescription: "Python connects the NVIDIA reranker API to AutoRAG's interface. Unit tests cover input, authentication, and response edge cases.",
+    learnings: [
+      { title: "Extending a library while preserving compatibility", description: "I added the module while retaining parameter order and configuration behavior. Supporting existing callers was part of delivering the new capability." },
+      { title: "Working within an existing design", description: "I studied existing module patterns and incorporated maintainer feedback, adapting the contribution to the project's conventions." },
+    ],
     title: "AutoRAG — NVIDIA Reranker",
     kicker: "Open Source · RAG Infrastructure",
     period: "2026.01 — 2026.03",
@@ -170,6 +201,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     slug: "wecation",
+    stackDescription: "React and TypeScript implement input and matching views; embeddings capture similarities in preferences and interests. The service uses Python and FastAPI, with UI/UX reviewed in Figma.",
+    learnings: [
+      { title: "Setting priorities under a deadline", description: "I focused on low-effort input and understandable matching results. Defining the core user journey helped the team complete a working hackathon MVP." },
+      { title: "Agreeing on boundaries for collaboration", description: "I defined data contracts between user input, matching, and recommendations. Designing how independently developed parts connect was part of my role as team lead." },
+    ],
     title: "Wecation",
     kicker: "Recommendation · Team Lead · Product",
     period: "2025.02",
@@ -193,6 +229,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     slug: "hearus",
+    stackDescription: "Whisper transcribes audio, while LangChain and the OpenAI API connect caption processing with review-question generation. FastAPI exposes AI capabilities to the React and Spring service.",
+    learnings: [
+      { title: "From access to a learning journey", description: "The service extends captions into finding key content and checking understanding. I worked on defining accessibility within the flow of attending and reviewing a class." },
+      { title: "The boundary between AI and the service", description: "I worked with audio segments, inference output, and questions delivered as JSON. In a shared codebase, that meant defining how AI output reaches the next processing stage." },
+    ],
     title: "Hearus",
     kicker: "Accessibility · Speech AI · Education",
     period: "2024.06 — 2024.12",
@@ -218,6 +259,11 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     "slug": "crypto-whitepaper",
+    stackDescription: "Python and Hugging Face support text processing; CryptoBERT and K-Means group white papers. LSTM and GRU variants test forecasting and transfer within those clusters.",
+    learnings: [
+      { title: "Evaluating similarity and forecasting separately", description: "I represented white-paper similarity through clustering, then compared forecasting models to explore transfer. Semantic similarity and predictive performance were evaluated as separate parts of the experiment." },
+      { title: "Keeping experiment stages distinct", description: "Earlier Doc2Vec/DBSCAN work is distinguished from later CryptoBERT/K-Means experiments. The GRU result is interpreted within the recorded comparison rather than as a general claim." },
+    ],
     "title": "Crypto White-paper Similarity",
     "kicker": "NLP · Clustering · Time Series",
     "period": "2024.03 — 2024.08",
@@ -250,6 +296,12 @@ export const projectCasesEn: ProjectCase[] = [
   },
   {
     "slug": "disclosure-diff",
+    contributionScope: "project",
+    stackDescription: "Python collects OpenDART filings and compares before-and-after JSON fields. Output includes changes and source evidence, with pytest used for testing.",
+    learnings: [
+      { title: "Narrowing scope to define comparisons", description: "The MVP focuses on corrections to rights-offering decisions. It illustrates defining a document type first, then structuring changes to its financial values and dates." },
+      { title: "Keeping summaries linked to evidence", description: "Value changes, rates, and date differences are accompanied by source locations and review flags so readers can return to the original evidence." },
+    ],
     "title": "DisclosureDiff",
     "kicker": "Financial Data · Document Comparison",
     "period": "Public MVP",

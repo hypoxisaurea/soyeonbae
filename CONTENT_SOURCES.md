@@ -15,6 +15,7 @@ Content reviewed against the supplied resume (4 pages), portfolio (11 pages), an
 - DisclosureDiff: public README supports an MVP limited to rights-offering corrections. No accuracy, production deployment, team role or contribution percentage inferred.
 - Existing 89,994 QA-pair claim was retained from the site's prior content; it was not independently established by these two PDFs.
 - Source PDFs remain outside public assets; personal phone details were not added to the website.
+- Project case studies reorganized on 2026-09-18: technology descriptions and learning takeaways summarize existing contributions, decisions, and results. They do not establish new experiments, measured outcomes, or personal anecdotes. Local Hub and DisclosureDiff use project-level implementation and design-takeaway labels because individual responsibilities are not established by the available material.
 
 ## Public references
 

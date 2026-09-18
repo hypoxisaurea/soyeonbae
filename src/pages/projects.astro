@@ -13,17 +13,21 @@ const repositories = [
 <BaseLayout includeSidebar={false} title="Projects | 배소연" description="배소연의 RAG, 멀티 에이전트, 멀티모달 AI 프로젝트와 상세 기여 내용" sideBarActiveItemID="projects">
   <div class="standalone-page">
     <p class="eyebrow">PROJECTS</p>
-    <h1>검증 가능한 AI를<br />사용 가능한 제품으로.</h1>
-    <p class="page-lead">문제 정의, 담당 역할, 기술적 판단, 결과를 사례별로 정리했습니다. 공개 가능한 프로젝트는 실제 코드와 문서로 바로 연결됩니다.</p>
+    <h1>문제를 정의하고,<br />서비스로 풀어낸 과정.</h1>
+    <p class="page-lead">무엇을 해결하려 했고, 어떤 기술로 구현했는지 정리했습니다. 각 프로젝트에서 맡은 역할과 판단의 이유, 결과와 배운 점을 살펴볼 수 있습니다.</p>
     <div class="standalone-list">
       {projectCases.map((project) => (
         <article>
           <p class="entry-category">{project.kicker}</p>
           <h2><a href={`/projects/${project.slug}/`}>{project.title} →</a></h2>
           <p>{project.summary}</p>
-          <small>{project.stack.join(" · ")}</small>
+          <dl class="project-overview">
+            <div><dt>문제 정의</dt><dd>{project.problem}</dd></div>
+            <div><dt>{project.contributionScope === "project" ? "프로젝트 분야" : "담당 역할"}</dt><dd>{project.role}</dd></div>
+            <div><dt>기술스택</dt><dd>{project.stack.join(" · ")}</dd></div>
+          </dl>
           <div class="project-links">
-            <a href={`/projects/${project.slug}/`}>Case Study →</a>
+            <a href={`/projects/${project.slug}/`}>{project.contributionScope === "project" ? "구현과 설계 살펴보기" : "기여와 배운 점 보기"} →</a>
             <ProjectResources project={project} class="project-resource-links" />
           </div>
         </article>

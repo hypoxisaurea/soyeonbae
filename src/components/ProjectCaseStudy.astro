@@ -1,0 +1,81 @@
+---
+import ProjectResources from "./ProjectResources.astro";
+import type { ProjectCase } from "../data/projectCases";
+
+interface Props {
+  project: ProjectCase;
+  locale?: "ko" | "en";
+}
+
+const { project, locale = "ko" } = Astro.props;
+const isEnglish = locale === "en";
+const projectScope = project.contributionScope === "project";
+const projectsPath = isEnglish ? "/en/projects/" : "/projects/";
+const labels = isEnglish ? {
+  back: "All projects", period: "Period", role: projectScope ? "Project focus" : "My role",
+  problem: "Problem definition", stack: "Technology stack",
+  contribution: projectScope ? "Implementation" : "My contribution",
+  decisions: "Read the technical decisions", results: projectScope ? "Results and design takeaways" : "Results and lessons",
+  approach: "Implementation approach",
+  learnings: projectScope ? "Design takeaways" : "What I learned",
+  scope: "The implementation below describes the project. Individual responsibilities are not specified in the available material.",
+  footer: "Explore other projects",
+} : {
+  back: "전체 프로젝트", period: "진행 기간", role: projectScope ? "프로젝트 분야" : "담당 역할",
+  problem: "문제 정의", stack: "기술스택",
+  contribution: projectScope ? "구현 내용" : "나의 기여",
+  decisions: "세부 기술적 판단 보기", results: projectScope ? "결과와 설계에서 짚어볼 점" : "결과와 배운 점",
+  approach: "구현 방향",
+  learnings: projectScope ? "설계에서 짚어볼 점" : "배운 점",
+  scope: "아래는 프로젝트의 구현 내용입니다. 공개 자료에 개인별 담당 범위는 명시되어 있지 않습니다.",
+  footer: "다른 프로젝트 보기",
+};
+---
+
+<article class="case-study">
+  <a class="case-back" href={projectsPath}>← {labels.back}</a>
+  <header class="case-hero">
+    <h1>{project.title}</h1>
+    <p class="case-summary">{project.summary}</p>
+    <dl class="case-meta">
+      <div><dt>{labels.period}</dt><dd>{project.period}</dd></div>
+      <div><dt>{labels.role}</dt><dd>{project.role}</dd></div>
+      <div class="case-stack-row" id="stack"><dt>{labels.stack}</dt><dd class="case-stack">{project.stack.join(" · ")}</dd></div>
+    </dl>
+    <ProjectResources project={project} class="case-actions" />
+  </header>
+
+  <section class="case-section" id="problem" aria-labelledby="problem-heading">
+    <h2 id="problem-heading">{labels.problem}</h2>
+    <p>{project.problem}</p>
+    <div class="case-approach">
+      <h3>{labels.approach}</h3>
+      <p>{project.stackDescription}</p>
+    </div>
+  </section>
+
+  <section class="case-section" id="contribution" aria-labelledby="contribution-heading">
+    <h2 id="contribution-heading">{labels.contribution}</h2>
+    {projectScope && <p class="case-scope-note">{labels.scope}</p>}
+    <ul class="case-contributions">
+      {project.contributions.map((item) => <li>{item}</li>)}
+    </ul>
+    <details class="case-decisions">
+      <summary>{labels.decisions}</summary>
+      <ul>{project.decisions.map((item) => <li>{item}</li>)}</ul>
+    </details>
+  </section>
+
+  <section class="case-section" id="results" aria-labelledby="results-heading">
+    <h2 id="results-heading">{labels.results}</h2>
+    <ul class="case-results">{project.results.map((item) => <li>{item}</li>)}</ul>
+    <div class="case-learnings" id="learnings" role="group" aria-label={labels.learnings}>
+      {project.learnings.map((item) => <section><h3>{item.title}</h3><p>{item.description}</p></section>)}
+    </div>
+  </section>
+
+  <footer class="case-footer">
+    {project.sourceNote && <p>{project.sourceNote}</p>}
+    <a href={projectsPath}>{labels.footer} →</a>
+  </footer>
+</article>

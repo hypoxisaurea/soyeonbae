@@ -10,6 +10,9 @@ export type ProjectCase = {
   decisions: string[];
   results: string[];
   stack: string[];
+  stackDescription: string;
+  learnings: { title: string; description: string }[];
+  contributionScope?: "project";
   github?: string;
   pr?: string;
   demo?: string;
@@ -21,6 +24,12 @@ export type ProjectCase = {
 export const projectCases: ProjectCase[] = [
   {
     slug: "local-hub",
+    contributionScope: "project",
+    stackDescription: "Vue·Leaflet으로 지도 탐색 화면을 구성하고, FastAPI와 LangGraph로 질문 분류부터 데이터 조회·답변 생성까지 연결했습니다.",
+    learnings: [
+      { title: "질문에 따라 검색 경로 나누기", description: "장소 데이터 조회와 커뮤니티 검색을 분리한 구조입니다. 질문이 요구하는 정보에 따라 접근할 데이터와 조회 방법을 먼저 정하는 설계를 살펴볼 수 있습니다." },
+      { title: "사용자 화면과 검색 흐름 연결하기", description: "지도 탐색과 챗봇을 같은 서비스 안에 구성했습니다. 사용자가 직접 찾는 방식과 질문으로 찾는 방식을 함께 제공하는 사례입니다." },
+    ],
     title: "Local Hub",
     kicker: "Travel · Conversational AI · Text-to-SQL",
     period: "2026",
@@ -43,6 +52,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "darkaudit",
+    stackDescription: "OpenAI Responses API로 화면을 분석하고, YAML로 판정 규칙을 관리했습니다. React·FastAPI로 검토 흐름을 연결하고 Playwright·MSW로 테스트를 구성했습니다.",
+    learnings: [
+      { title: "모델의 판단과 규칙의 경계", description: "계산할 수 있는 신호와 맥락 해석이 필요한 신호를 나누고, 판단 기준은 별도로 관리했습니다. 무엇을 모델에 맡기고 무엇을 규칙으로 확인할지 정하는 것이 검증 가능한 분석의 출발점이었습니다." },
+      { title: "외부 모델 없이도 검증할 수 있는 구조", description: "Fake provider와 Risky/Clean 데이터 쌍을 마련해 분석 결과와 서비스 흐름을 시험할 수 있게 했습니다. 모델 연동과 테스트 환경을 함께 설계하는 경험을 쌓았습니다." },
+    ],
     title: "DarkAudit",
     kicker: "Multimodal AI · FinTech · UX Compliance",
     period: "2026",
@@ -74,6 +88,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "finagent-sme",
+    stackDescription: "LangGraph로 분석 단계의 의존성을 표현하고, PostgreSQL·Chroma로 정형 데이터와 검색 근거를 관리했습니다. FastAPI·Streamlit은 장시간 작업의 상태와 결과를 전달하고, Langfuse·RAGAS는 추적과 평가에 사용했습니다.",
+    learnings: [
+      { title: "에이전트 협업은 의존성 설계부터", description: "각 분석에 필요한 입력과 선행 작업을 정리해 실행 순서를 나눴습니다. 에이전트의 수보다 어떤 근거를 받아 다음 판단으로 넘기는지가 설계의 중심이었습니다." },
+      { title: "실패도 사용자 흐름의 일부", description: "진행 로그, 상태 조회, 재생성, 검증 실패 시 결과 차단을 함께 구성했습니다. 장시간 작업에서는 성공한 결과뿐 아니라 기다리는 과정과 실패 이후의 동작도 설계해야 했습니다." },
+    ],
     title: "FinAgent-SME",
     kicker: "Multi-agent · Credit Assessment · RAG",
     period: "2026",
@@ -103,6 +122,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "kaption",
+    stackDescription: "React·TypeScript로 Chrome Side Panel을 만들고, Gemini 2.5로 영상의 문화적 맥락을 분석했습니다. OpenAI Realtime API·WebRTC로 음성 대화를 연결하고 FastAPI에서 세션 토큰을 발급했습니다.",
+    learnings: [
+      { title: "AI가 개입하는 위치도 설계 대상", description: "시청 중 필요한 설명을 바로 볼 수 있도록 Side Panel과 타임스탬프별 체크포인트를 선택했습니다. 모델의 답변을 사용자가 언제, 어디서 접하는지가 학습 흐름을 만드는 중요한 요소였습니다." },
+      { title: "분석 결과를 다음 행동으로 연결", description: "문화 설명을 요약·대화·퀴즈로 이어지게 구성했습니다. 생성한 정보를 읽는 것에서 직접 말하고 이해를 확인하는 단계까지 서비스로 연결했습니다." },
+    ],
     title: "Kaption",
     kicker: "Multimodal AI · Chrome Extension · Realtime",
     period: "2025.09 — 2025.10",
@@ -134,6 +158,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "legal-rag",
+    stackDescription: "Python·Haystack으로 법률 데이터와 검색 흐름을 다루고, 도메인 임베딩을 fine-tuning했습니다. MRR·NDCG·RAGAS 등으로 검색 순위와 답변 품질을 나누어 평가했습니다.",
+    learnings: [
+      { title: "비교 가능한 실험의 조건", description: "데이터 버전과 실험 조건을 통제한 뒤 모델을 비교했습니다. 성능 변화의 원인을 설명하려면 학습과 평가의 기준부터 일관되게 정리해야 했습니다." },
+      { title: "실패를 다음 학습의 재료로", description: "정답 조문이 검색되지 않는 경우와 상위에 노출되지 않는 경우를 나누어 분석했습니다. 유사한 법률 표현에서 발생하는 실패 사례를 도메인 학습 데이터로 활용했습니다." },
+    ],
     title: "Legal Contract Review RAG",
     kicker: "Legal AI · Retrieval Evaluation · Research",
     period: "2025",
@@ -164,6 +193,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "autorag-nvidia-reranker",
+    stackDescription: "Python으로 NVIDIA reranker API를 AutoRAG 인터페이스에 연결하고, 입력·인증·응답의 예외 조건을 유닛 테스트로 확인했습니다.",
+    learnings: [
+      { title: "새 기능과 기존 사용자의 호환성", description: "기존 호출 순서와 설정 전달 방식을 유지하며 API 모듈을 추가했습니다. 공유 라이브러리에서는 기능을 늘리는 일과 기존 사용자의 동작을 지키는 일을 함께 고려해야 했습니다." },
+      { title: "리뷰를 통해 프로젝트에 맞추기", description: "기존 모듈의 패턴을 읽고 메인테이너의 피드백을 반영했습니다. 외부 프로젝트의 설계 규칙을 이해하고 그 안에서 변경을 완성하는 경험을 쌓았습니다." },
+    ],
     title: "AutoRAG — NVIDIA Reranker",
     kicker: "Open Source · RAG Infrastructure",
     period: "2026.01 — 2026.03",
@@ -188,6 +222,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "wecation",
+    stackDescription: "React·TypeScript로 입력과 매칭 결과 화면을 구현하고, 임베딩으로 성향·관심사 유사도를 다뤘습니다. Python·FastAPI를 활용한 서비스 구조와 Figma 기반 UI/UX 검토를 진행했습니다.",
+    learnings: [
+      { title: "제한된 시간 안에서 우선순위 정하기", description: "입력 부담을 낮추고 이해할 수 있는 매칭 결과를 보여주는 데 집중했습니다. 핵심 사용자 흐름을 먼저 정해 해커톤 안에서 동작하는 MVP로 완성했습니다." },
+      { title: "함께 개발하기 위한 약속", description: "사용자 입력과 매칭 결과, 프로그램 추천 사이의 데이터 계약을 먼저 정리했습니다. 팀이 각자 맡은 부분을 연결할 수 있도록 경계를 설계하는 것도 리드의 역할이었습니다." },
+    ],
     title: "Wecation",
     kicker: "Recommendation · Team Lead · Product",
     period: "2025.02",
@@ -211,6 +250,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     slug: "hearus",
+    stackDescription: "Whisper로 음성을 텍스트로 바꾸고, LangChain·OpenAI API를 활용해 자막 처리와 복습 문제 생성을 연결했습니다. AI 기능은 FastAPI로 분리해 React·Spring 서비스와 연동했습니다.",
+    learnings: [
+      { title: "접근성에서 학습 흐름까지", description: "자막을 제공한 뒤 핵심 내용을 다시 찾고 이해를 확인하는 과정까지 기능을 확장했습니다. 접근성 문제를 실제 수업과 복습의 흐름 안에서 구체화한 경험입니다." },
+      { title: "AI와 서비스가 만나는 경계", description: "음성 세그먼트, 추론 결과, JSON 형태의 문제 전달 과정을 다뤘습니다. 여러 사람이 개발하는 서비스에서 AI 출력이 다음 단계에 어떤 형태로 전달될지 함께 정리했습니다." },
+    ],
     title: "Hearus",
     kicker: "Accessibility · Speech AI · Education",
     period: "2024.06 — 2024.12",
@@ -236,6 +280,11 @@ export const projectCases: ProjectCase[] = [
   },
   {
     "slug": "crypto-whitepaper",
+    stackDescription: "Python·Hugging Face로 백서를 전처리하고 CryptoBERT·K-Means로 군집화했습니다. LSTM·GRU 계열 모델을 비교하며 같은 군집 안에서 시계열 예측 모델의 전이 가능성을 실험했습니다.",
+    learnings: [
+      { title: "텍스트 유사도와 예측을 별도로 확인", description: "백서가 비슷하다는 가설을 군집화로 표현하고, 가격 시계열 모델 비교로 전이 가능성을 살폈습니다. 문서의 의미적 유사성과 예측 성능을 각각 확인하는 실험을 구성했습니다." },
+      { title: "실험 단계와 결과의 범위 기록", description: "초기 Doc2Vec·DBSCAN 실험과 이후 CryptoBERT·K-Means 실험을 구분했습니다. GRU 비교 결과 역시 기록된 실험 범위 안에서 해석하도록 정리했습니다." },
+    ],
     "title": "암호화폐 백서 기반 유사도 분석",
     "kicker": "NLP · Clustering · Time Series",
     "period": "2024.03 — 2024.08",
@@ -268,6 +317,12 @@ export const projectCases: ProjectCase[] = [
   },
   {
     "slug": "disclosure-diff",
+    contributionScope: "project",
+    stackDescription: "Python으로 OpenDART 공시 데이터를 수집하고 JSON 필드의 전후 값을 비교합니다. 원문 근거와 변화량을 구조화해 출력하며 pytest를 테스트에 사용합니다.",
+    learnings: [
+      { title: "범위를 좁혀 비교 기준 세우기", description: "MVP의 비교 대상을 유상증자 결정 정정공시로 한정했습니다. 문서 유형을 정하고 그 안의 금액·일정 변경을 구조화하는 접근을 살펴볼 수 있습니다." },
+      { title: "변경 요약과 원문 근거 함께 제공", description: "변화량·변화율·날짜 차이에 원문 근거 위치와 재검토 필요 여부를 함께 출력합니다. 요약을 읽은 사람이 원문으로 돌아가 확인할 수 있는 비교 구조입니다." },
+    ],
     "title": "DisclosureDiff",
     "kicker": "Financial Data · Document Comparison",
     "period": "공개 MVP",

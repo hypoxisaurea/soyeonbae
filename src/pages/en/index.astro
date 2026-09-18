@@ -10,7 +10,6 @@ const publications = [
 ];
 
 const experience = [
-  { title: "SSAFY Cohort 16", role: "Samsung Software Academy", period: "2026.07 — Present", bullets: ["Developing AI services and financial-domain projects while strengthening software engineering skills."] },
   { title: "DeepModal", role: "AI Researcher", period: "2025.06 — 2025.12", bullets: ["Built legal data and improved RAG retrieval for the Korea Fair Trade Commission's AI contract-review platform.", "Created 89,994 QA pairs and published two domestic conference papers."] },
   { title: "Prometheus Cohort 5", role: "AI Project Member", period: "2024.03 — 2025.02", bullets: ["Built projects for crypto white-paper analysis, an LLM deduction game, and personalized story generation."] },
   { title: "UMC Cohort 5", role: "Frontend Study Lead", period: "2023.09 — 2024.02", bullets: ["Led a React study group and implemented key screens for Career Festival."] },
@@ -18,6 +17,7 @@ const experience = [
 ];
 
 const education = [
+  { title: "SSAFY Cohort 16", detail: "Samsung Software Academy · AI services and financial-domain projects", period: "2026.07 — Present" },
   { title: "Hansung University", detail: "B.S. in Computer Engineering", period: "2020.03 — 2025.02" },
   { title: "LG AI Aimers Cohort 4", detail: "AI/ML Program", period: "2024.01 — 2024.02" },
   { title: "Naver Coaching Study", detail: "Data Science Program", period: "2024.01 — 2024.02" },
@@ -34,15 +34,17 @@ const awards = [
 
 ---
 
-<BaseLayout locale="en" includeSidebar={false} title="Soyeon Bae | AI Engineer" description="Portfolio of Soyeon Bae, an AI engineer building production-ready RAG, agentic AI, and multimodal systems.">
+<BaseLayout locale="en" includeSidebar={false} title="Soyeon Bae | AI Engineer" description="Soyeon Bae, an AI engineer who wants to improve people's lives through software. From literature to NLP, with interests in guardrails, harness engineering, and multi-agent systems.">
   <article class="portfolio-v2">
     <header class="v2-cover" id="top">
       <div class="v2-cover-meta"><a href="#top">BAE SOYEON</a><span>AI ENGINEER · PORTFOLIO 2026</span></div>
-      <div class="v2-cover-copy"><h1>Building AI<br />you can <em>trust.</em></h1><p class="v2-cover-signature">From evidence to everyday use.</p></div>
+      <div class="v2-cover-copy"><h1>Building AI for<br /><em>better lives.</em></h1><p class="v2-cover-signature">From a love of language to AI.</p></div>
       <div class="v2-cover-bottom">
-        <p>RAG · Agentic AI · Multimodal Systems</p>
+        <p>NLP · Guardrails · Harness Engineering · Multi-Agent Systems</p>
         <div class="v2-cover-intro">
-          <p>I'm Soyeon Bae, an AI engineer. I turn complex data into grounded decisions and build AI services people can use, from retrieval to the interface.</p>
+          <p>I'm Soyeon Bae, an AI engineer.</p>
+          <p>My interest in literature grew into natural language processing and AI.</p>
+          <p>I explore how technology can make everyday life better.</p>
           <div class="v2-cover-actions"><a class="v2-cover-primary" href="#projects">See my work <span aria-hidden="true">↗</span></a><a href="mailto:flickerlight14@naver.com">Get in touch <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
@@ -57,7 +59,35 @@ const awards = [
       </aside>
 
       <div class="v2-content">
-        <section id="about" class="v2-section v2-about"><div class="v2-section-label"><span>01</span><p>ABOUT</p></div><div class="v2-section-body"><p class="v2-lead">From data to interface,<br />I build <strong>verifiable AI products.</strong></p><p class="v2-body-copy">I connect data construction, retrieval evaluation, model integration, and user interfaces into complete service flows for trust-sensitive domains such as law and finance. I focus not only on better metrics, but also on systems whose failures can be explained and tested again.</p><dl class="v2-metrics"><div><dt>89,994</dt><dd>legal QA pairs built</dd></div><div><dt>+5.6%</dt><dd>MRR@10 improvement</dd></div><div><dt>2</dt><dd>conference papers</dd></div><div><dt>4</dt><dd>project awards</dd></div></dl></div></section>
+        <section id="about" class="v2-section v2-about">
+          <div class="v2-section-label"><span>01</span><p>ABOUT</p></div>
+          <div class="v2-section-body">
+            <h2 class="v2-lead">Hi, I'm <strong>Soyeon Bae,</strong><br />an AI engineer.</h2>
+            <p class="v2-body-copy">I want to build services that ease everyday difficulties and make a useful difference in people's lives.</p>
+            <div class="v2-about-story">
+              <section>
+                <h3>From literature to natural language processing</h3>
+                <p>My interest in literature and the written word led me to natural language processing (NLP), then to building AI services.</p>
+                <p>I explore how language technology can help people understand things and ease everyday difficulties. When I encounter a new technology, I also think about where it could be useful and whom it could help.</p>
+              </section>
+              <section>
+                <h3>Understanding causes and making improvements</h3>
+                <p>I break problems into smaller parts and first decide what needs to be checked.</p>
+                <p>When results differ from expectations, I examine the data and processing steps to find the cause. I then check whether my changes actually helped. I aim to build systems whose behavior I can explain and continue to improve.</p>
+              </section>
+              <section>
+                <h3>Communicating from the other person's perspective</h3>
+                <p>When working with others, I consider the background and context they bring to my work.</p>
+                <p>I share the reasons behind my decisions alongside the results. When feedback shows my explanations or materials are hard to follow, I adjust them. I see making my work understandable and useful to others as part of my responsibility.</p>
+              </section>
+              <section>
+                <h3>Toward AI people can rely on</h3>
+                <p>I'm currently interested in guardrails, harness engineering, and multi-agent systems.</p>
+                <p>I want to explore how to help AI carry out its tasks reliably, with ways to detect and correct when it goes off course. By applying what I learn to real services, I hope to grow as a developer who builds AI people can rely on.</p>
+              </section>
+            </div>
+          </div>
+        </section>
 
         <section id="projects" class="v2-section">
           <div class="v2-section-label"><span>02</span><p>SELECTED PROJECTS</p></div>
